@@ -1,0 +1,290 @@
+// .absolute-container {
+//   width: 100%;
+//   height: 100vh;
+//   position: relative;
+//   z-index: 0;
+//   .left-container {
+//     width: 50%;
+//     height: 100%;
+//     background-color: #3c434a;
+//   }
+//   .right-container {
+//     width: 50%;
+//     height: 100%;
+//     background-color: #f8fafc;
+//   }
+//   .center-absolute-container {
+//     width: 100%;
+//     height: 100%;
+//     position: absolute;
+//     top: 0;
+//     z-index: 1;
+//     .container {
+//       padding-top: 100px;
+//       .left-content,
+//       .right-content {
+//         width: 50%;
+//         .title {
+//           font-size: 50px;
+//           color: var(--white);
+//         }
+//         .subtitle {
+//           font-size: 18px;
+//           color: var(--light-pink);
+//         }
+//       }
+//     }
+//   }
+// }
+
+//   <!-- частина для реєстрації -->
+.absolute-container {
+  background-color: var(--light-background);
+  width: 100%;
+  height: 125vh;
+  position: relative;
+  z-index: 0;
+  .left-container {
+    width: 50%;
+    height: 100%;
+    background-color: #3c434a;
+    background-image: url("/assets/png/shape-top.png");
+    background-repeat: no-repeat;
+  }
+  .right-container {
+    width: 50%;
+    height: 100%;
+    background-color: #f8fafc;
+  }
+  .center-absolute-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    .container {
+      width: auto;
+      // height: 100vh;
+      .left-content {
+        // height: 100%;
+        background-image: url("/assets/png/shape.png");
+        background-repeat: no-repeat;
+        background-position: bottom right;
+
+        .companies {
+          .images {
+            width: 540px;
+            height: 41px;
+            .wsj {
+              width: 63px;
+              height: 36px;
+            }
+            .forbes {
+              width: 93px;
+              height: 25px;
+            }
+            .apple {
+              width: 36px;
+              height: 41px;
+            }
+            .mashable {
+              width: 128px;
+              height: 21px;
+            }
+            .google {
+              width: 106px;
+              height: 34px;
+            }
+          }
+
+          .brands {
+            span {
+              font-family: "Inter", sans-serif;
+              font-weight: 600;
+              font-size: 24px;
+              line-height: 1.5;
+              text-align: center;
+              color: var(--white);
+            }
+          }
+          img {
+            width: 400px;
+          }
+        }
+        width: 50%;
+        .title {
+          font-family: "Poppins", sans-serif;
+          font-weight: 600;
+          font-size: 50px;
+          line-height: 1.28;
+          letter-spacing: -0.04em;
+          color: var(--white);
+        }
+        .title-login {
+          font-family: "Poppins", sans-serif;
+          font-weight: 600;
+          font-size: 60px;
+          line-height: 1.1;
+          letter-spacing: -0.03em;
+          color: var(--white);
+        }
+        .subtitle-login {
+          font-family: "Poppins", sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 1.66667;
+          color: var(--light-pink);
+        }
+        .subtitle {
+          font-family: "Inter", sans-serif;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 1.66667;
+          color: var(--white);
+        }
+        .text-container {
+          .text {
+            font-family: "Inter", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 1.875;
+            color: var(--white);
+          }
+        }
+      }
+
+      .right-content {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .absolute-container {
+    .center-absolute-container {
+      .container {
+        .left-content,
+        .right-content {
+          .title {
+            font-size: 30px;
+            text-align: center;
+          }
+          .subtitle {
+            font-size: 18px;
+            width: 80%;
+          }
+          .title-login {
+            font-size: 30px;
+            text-align: center;
+          }
+          .subtitle-login {
+            font-size: 18px;
+            width: 100%;
+            text-align: center;
+          }
+        }
+        .left-content {
+          .companies {
+            .images {
+              width: 450px;
+              height: 41px;
+              .wsj {
+                width: 58px;
+                height: 31px;
+              }
+              .forbes {
+                width: 88px;
+                height: 20px;
+              }
+              .apple {
+                width: 31px;
+                height: 36px;
+              }
+              .mashable {
+                width: 123px;
+                height: 16px;
+              }
+              .google {
+                width: 101px;
+                height: 29px;
+              }
+            }
+
+            .brands {
+              span {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .absolute-container {
+    height: 100vh;
+    .left-container {
+      display: none;
+    }
+    .right-container {
+      display: none;
+    }
+    .center-absolute-container {
+      .container {
+        padding-top: 30px;
+        .left-content {
+          display: none;
+        }
+        .right-content {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+// @media (max-width: 1100px) {
+//   .absolute-container {
+//     .center-absolute-container {
+//       .container {
+//         .left-content,
+//         .right-content {
+//           .title {
+//             font-size: 30px;
+//             color: var(--white);
+//           }
+//           .subtitle {
+//             font-size: 18px;
+//             color: var(--light-pink);
+//             width: 80%;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media (max-width: 950px) {
+//   .absolute-container {
+//     .left-container {
+//       display: none;
+//     }
+//     .right-container {
+//       display: none;
+//     }
+//     .center-absolute-container {
+//       .container {
+//         padding-top: 30px;
+//         .left-content {
+//           display: none;
+//         }
+//         .right-content {
+//           width: 100%;
+//         }
+//       }
+//     }
+//   }
+// }

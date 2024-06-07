@@ -1,0 +1,78 @@
+<app-auth-step-layout
+  [steps]="true"
+  [$currentStep]="$currentStep.asObservable()"
+>
+  <ng-container *ngIf="currentStep === 'two'; else default">
+    <form *ngIf="formSocialInputs" [formGroup]="formSocialInputs">
+      <ng-container
+        [ngTemplateOutlet]="default"
+        [ngTemplateOutletContext]="{ form: formSocialInputs }"
+      ></ng-container>
+    </form>
+  </ng-container>
+
+  <ng-template #default let-form="form">
+    <div class="card">
+      <div class="text-container m-b-20 d-flex flex-d-col justify-center">
+        <span class="title p-l-24">Primary Interest:</span>
+        <span class="subtitle p-l-24">Select Up to 3 categories</span>
+      </div>
+      <div class="checkboxes d-flex flex-d-row">
+        <ng-container *ngFor="let checkbox of checkBoxes">
+          <div
+            class="checkbox p-lr-30 d-flex flex-d-col m-b-16"
+            [style.width]="checkBoxes === checkBoxesStepTwo ? '100%' : '30%'"
+          >
+            <input
+              type="checkbox"
+              class="custom-checkbox"
+              [id]="checkbox.id"
+              [name]="checkbox.id"
+              [checked]="
+                formPart?.get(currentStep)?.value.includes(checkbox.id)
+              "
+              (change)="toggleCheckbox(checkbox.id, currentStep)"
+            />
+            <label [for]="checkbox.id">
+              {{ checkbox.text }}
+            </label>
+            <div class="input-wrap d-flex justify-start w-100">
+              <div
+                class="input m-t-12 d-flex align-center"
+                *ngIf="
+                  currentStep === 'two' &&
+                  formPart?.get(currentStep)?.value.includes(checkbox.id)
+                "
+              >
+                <img class="m-r-10" src="/assets/svg/url.svg" />
+                <input
+                  class="d-flex align-center"
+                  type="text"
+                  [placeholder]="checkbox.text + ' url'"
+                  [formControl]="form?.get(checkbox.id + 'url')"
+                />
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="buttons p-t-50 p-b-30 d-flex flex-d-row justify-center">
+        <button
+          class="general back m-r-16"
+          (click)="prev()"
+          [disabled]="currentStep === 'one'"
+        >
+          BACK
+        </button>
+        <button
+          class="general"
+          (click)="next()"
+          [disabled]="formPart?.invalid || formSocialInputs?.invalid"
+        >
+          NEX STEP
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</app-auth-step-layout>

@@ -1,0 +1,131 @@
+<div class="absolute-container">
+  <div
+    class="container p-0 d-flex align-center justify-space-between d-flex flex-d-col"
+  >
+    <div class="header d-flex flex-d-row justify-space-between">
+      <div class="menu p-l-24 sm-p-l-16 align-center d-flex">
+        <div class="burger-menu m-r-16">
+          <div class="m-b-5"></div>
+          <div class="m-b-5"></div>
+          <div></div>
+        </div>
+        <div class="logo m-r-80 lg-m-r-30 sm-m-r-16">
+          <span>Logo</span>
+        </div>
+        <ul class="d-flex flex-d-row align-center">
+          <li>
+            <button><span>Item One</span></button>
+          </li>
+          <li class="m-lr-40">
+            <button><span>Item Two</span></button>
+          </li>
+          <li>
+            <button><span>Item Three</span></button>
+          </li>
+        </ul>
+      </div>
+      <!-- кнопка виходу з системи -->
+      <!-- <button style="width: 100px;" (click)="logoutt()">logout</button> -->
+      <div class="buttons p-r-24 sm-p-r-16 align-center d-flex">
+        <div
+          class="search m-r-27 lg-m-r-20 input d-flex align-center justify-space-between"
+        >
+          <input type="text" name="" placeholder="Search..." id="" />
+          <button
+            class="general d-flex justify-center align-center m-r-7"
+            (click)="toggleFilter()"
+          >
+            <img #iconButton src="/assets/svg/search.svg" alt="" />
+          </button>
+        </div>
+        <div class="search-mobile d-flex align-center m-r-16">
+          <button
+            class="general d-flex justify-center align-center"
+            (click)="toggleFilter()"
+          >
+            <img #iconButton src="/assets/svg/search.svg" alt="" />
+          </button>
+        </div>
+
+        <!-- частина коли авторизувався -->
+        <div
+          *ngIf="immitationService.isAuth$ | async; else infoBlock"
+          class="registered d-flex align-center"
+        >
+          <span class="name">Hello, </span>
+          <span class="surname">Sudarshan</span>
+          <div class="profile-image m-l-16">
+            <img src="/assets/png/avatar.png" alt="" />
+            <div class="active-point d-flex justify-center align-center">
+              <div class="green"></div>
+            </div>
+          </div>
+        </div>
+
+        <ng-template #infoBlock>
+          <div class="d-flex">
+            <button routerLink="/auth/login" class="general log-in m-r-16">
+              Log in
+            </button>
+            <button routerLink="/auth/register" class="general">Sign Up</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isActive" class="absolute-container p-absolute z-index-10">
+  <div
+    class="container select p-0 d-flex align-center justify-center d-flex flex-d-col sm-p-t-16"
+  >
+    <div class="filter w-100 d-flex flex-d-col justify-center align-center">
+      <div class="inputs w-100 d-flex align-end">
+        <form
+          class="w-100 d-flex align-end justify-center sm-d-wrap"
+          [formGroup]="reactiveForm"
+          (ngSubmit)="submitForm()"
+        >
+          <div class="wrap d-flex flex-d-col m-r-20 sm-m-r-0 sm-m-b-20">
+            <span class="title m-b-18">Filter</span>
+            <span class="text">Keyword</span>
+            <div class="input m-t-10">
+              <input
+                class="p-l-15"
+                formControlName="Keyword"
+                placeholder="Keyword.."
+                type="text"
+              />
+            </div>
+          </div>
+          <div class="wrap m-r-20 sm-m-r-0 sm-m-b-20">
+            <span class="text">All Cetegories</span>
+            <div class="input m-t-10">
+              <select id="cetegories" formControlName="cetegories">
+                <option value="" disabled>Select</option>
+                <option
+                  *ngFor="let cetegories of cetegory"
+                  [value]="cetegories"
+                >
+                  {{ cetegories }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="wrap m-r-20 sm-m-r-0 sm-m-b-20">
+            <span class="text">City</span>
+            <div class="input m-t-10">
+              <select id="city" formControlName="city">
+                <option value="" disabled>Select</option>
+                <option *ngFor="let city of citys" [value]="city">
+                  {{ city }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <button class="general">Apply Filter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

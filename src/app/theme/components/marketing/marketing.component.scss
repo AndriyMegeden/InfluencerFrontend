@@ -1,0 +1,203 @@
+.absolute-container {
+  .container {
+    max-width: 1140px;
+    .text {
+      width: 330px;
+      .title {
+        span {
+          font-family: "Inter", sans-serif;
+          font-weight: 700;
+          font-size: 28px;
+          line-height: 1.14286;
+          letter-spacing: 0.01em;
+          color: var(--dark-background);
+        }
+      }
+      .subtitle {
+        span {
+          font-family: "Inter", sans-serif;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 1.25;
+          letter-spacing: 0.01em;
+          color: var(--black);
+        }
+      }
+    }
+    .cards {
+      .card {
+        width: 370px;
+        height: auto;
+        border-radius: 12px;
+        .image {
+          width: 100%;
+          height: 250px;
+          img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .interact {
+          border-radius: 0 0 12px 12px;
+          border-top: 0px !important;
+          border: 1px solid var(--light-red);
+          .title {
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.33333;
+            text-transform: capitalize;
+            color: var(--dark-background);
+          }
+          .subtitle {
+            width: 265px;
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.625;
+            text-transform: capitalize;
+            color: var(--light-gray);
+          }
+          .general {
+            width: 135px;
+            height: 42px;
+            background-color: var(--light-red);
+            font-family: "Inter", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 1.71429;
+            text-transform: capitalize;
+            text-align: center;
+            color: var(--white);
+          }
+        }
+        .active {
+          background-color: var(--light-red);
+          .title {
+            color: var(--white);
+          }
+          .subtitle {
+            color: var(--white);
+          }
+          .general {
+            background-color: var(--white);
+            color: var(--dark-background);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .absolute-container {
+    .container {
+      .cards {
+        .card {
+          width: 300px;
+          .interact {
+            .subtitle {
+              width: 100%;
+            }
+          }
+          .image {
+            height: 203px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .absolute-container {
+    .container {
+      .text {
+        width: 100%;
+        text-align: center;
+        .title {
+          span {
+            font-size: 26px;
+          }
+        }
+      }
+      .cards {
+        .card {
+          width: 300px;
+
+          .image {
+            height: 203px;
+          }
+          .interact {
+            .title {
+              font-size: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .absolute-container {
+    .container {
+      .text {
+        width: 100%;
+        text-align: center;
+        .title {
+          span {
+            font-size: 24px;
+          }
+        }
+      }
+      .cards {
+        .card {
+          width: 270px;
+
+          .image {
+            width: 100%;
+            height: 182px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    .container {
+      .text {
+        width: 100%;
+        text-align: center;
+        .title {
+          span {
+            font-size: 20px;
+          }
+        }
+        .subtitle {
+          span {
+            font-size: 14px;
+          }
+        }
+      }
+      .cards {
+        .card {
+          width: 310px;
+
+          .image {
+            width: 100%;
+            height: 209px;
+          }
+          .interact {
+            .title {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+.absolute-container {
+  .container {
+    max-width: 1140px;
+    .home {
+      border-radius: 10px;
+      width: 100%;
+      height: 62px;
+      background-color: var(--light-pink);
+      img {
+        transform: rotate(270deg);
+      }
+      span {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.57143;
+        color: var(--dark-background);
+      }
+    }
+    .found {
+      width: 100%;
+      height: 50px;
+      .left {
+        height: 100%;
+        .box {
+          width: 50px;
+          height: 50px;
+          border-radius: 10px;
+          background-color: var(--light-red);
+        }
+        span {
+          font-family: "Inter", sans-serif;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 1.625;
+          color: var(--dark-background);
+        }
+      }
+
+      .input {
+        width: 180px;
+        height: 50px;
+        select {
+          font-family: "Inter", sans-serif;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 1.625;
+          color: var(--dark-background);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    .container {
+      .found {
+        height: auto;
+      }
+    }
+  }
+}

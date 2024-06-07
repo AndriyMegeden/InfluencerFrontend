@@ -1,0 +1,51 @@
+<app-auth-step-layout>
+  <div class="card">
+    <div class="text-container m-b-20 d-flex flex-d-col justify-center">
+      <span class="title p-l-24">A Few More Details</span>
+      <span class="subtitle p-l-24">Fill the below detilas and submit</span>
+    </div>
+    <form [formGroup]="form">
+      <div class="inputs p-lr-30 align-center d-flex flex-d-col justify-center">
+        <div class="input p-l-10 m-b-20 align-center d-flex">
+          <input
+            formControlName="businessName"
+            class="m-b-10"
+            placeholder="Business Name"
+            type="text "
+          />
+        </div>
+        <div class="input p-l-10 m-b-20 align-center d-flex">
+          <input
+            formControlName="businessWebsite"
+            class="m-b-10"
+            placeholder="Business Website (Optional)"
+            type="text"
+          />
+        </div>
+        <div class="input p-l-10 m-b-20 align-center d-flex">
+          <input
+            formControlName="gstNumber"
+            class="m-b-10"
+            placeholder="GST Number (Optional)"
+            type="text"
+            onlyInteger
+          />
+        </div>
+        <div class="input p-l-10 m-b-40 align-center d-flex">
+          <input
+            formControlName="businessAddress"
+            class="m-b-10"
+            placeholder="Business Address"
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="buttons d-flex justify-center">
+        <button [disabled]="form.invalid" type="submit" class="general" (click)="getForm()">
+          SUBMIT
+        </button>
+      </div>
+    </form>
+  </div>
+</app-auth-step-layout>
+

@@ -1,0 +1,34 @@
+<div class="absolute-container">
+  <div class="container p-0">
+    <div class="content d-flex flex-d-col justify-center align-center">
+      <ng-container *ngIf="steps">
+        <div class="step-container">
+          <div
+            class="achievement m-t-20 w-100 d-flex justify-center align-center"
+          >
+            <div class="circle left d-flex justify-center align-center">
+              <img src="/assets/svg/done.svg" alt="" />
+            </div>
+  
+            <div class="strip"></div>
+            <div [ngClass]="{ 'active': currentStep === 'two' }"  class="circle right d-flex justify-center align-center">
+              <img [src]="currentStep === 'one' ? '/assets/svg/done-dark.svg' : '/assets/svg/done.svg'" alt="" />
+            </div>
+          </div>
+          <div
+            class="text m-t-10 m-b-30 d-flex justify-center sm-justify-space-between"
+          >
+            <div class="left d-flex justify-start">
+              <span class="">PlatformParts</span>
+            </div>
+            <div class="right d-flex justify-end">
+              <span class="">Field of Interests</span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+     
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

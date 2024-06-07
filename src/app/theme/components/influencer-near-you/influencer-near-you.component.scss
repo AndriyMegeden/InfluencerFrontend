@@ -1,0 +1,74 @@
+.absolute-container {
+  .container {
+    max-width: 1360px;
+    .title {
+      width: 100%;
+      span {
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 1.05263;
+        color: var(--dark-background);
+      }
+    }
+    .countries {
+      .column {
+        width: 240px;
+        .title {
+          font-family: "Inter", sans-serif;
+          font-weight: 700;
+          font-size: 22px;
+          line-height: 1.09091;
+          color: var(--dark-background);
+        }
+        .subtitle {
+          font-family: "Inter", sans-serif;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 1.5;
+          color: var(--light-gray);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .absolute-container {
+    .container {
+      text-align: center;
+      .title {
+        span {
+          font-size: 30px;
+        }
+      }
+      .countries {
+        .column {
+          .title {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    .container {
+      .title {
+        span {
+          font-size: 24px;
+        }
+      }
+      .countries {
+        .column {
+          .subtitle {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}

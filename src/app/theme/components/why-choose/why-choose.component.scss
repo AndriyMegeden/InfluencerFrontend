@@ -1,0 +1,220 @@
+.absolute-container {
+  .container {
+    max-width: 1140px;
+    .title {
+      .first {
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 32px;
+        line-height: 1.25;
+        color: var(--dark-background);
+      }
+      .second {
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 1.05263;
+        color: var(--dark-background);
+      }
+      .line {
+        width: 100%;
+        height: 20px;
+        background-position: center center;
+        background-image: url("/assets/svg/red-line.svg");
+        background-repeat: no-repeat;
+      }
+    }
+    .cards {
+      .card {
+        &.active {
+          background-color: var(--light-pink);
+        }
+        .icon {
+          .impact {
+            width: 70px;
+            height: 70px;
+          }
+        }
+        padding: 32px;
+        width: 360px;
+        height: 385px;
+        border-radius: 20px;
+        .title {
+          width: 180px;
+          span {
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.5;
+            color: var(--dark-background);
+          }
+        }
+        .text {
+          span {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--light-gray);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .absolute-container {
+    .container {
+      .title {
+        .first {
+          font-size: 26px;
+        }
+        .second {
+          font-size: 32px;
+        }
+      }
+      .cards {
+        .card {
+          .icon {
+            img {
+              width: 50px;
+              height: 50px;
+            }
+          }
+          padding: 28px;
+          width: 230px;
+          height: 250px;
+
+          .title {
+            span {
+              font-size: 18px;
+            }
+          }
+          .text {
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .absolute-container {
+    .container {
+      .title {
+        .first {
+          font-size: 22px;
+        }
+        .second {
+          font-size: 28px;
+        }
+      }
+      .cards {
+        .card {
+          .icon {
+            img {
+              width: 30px;
+              height: 30px;
+            }
+          }
+          padding: 18px;
+          width: 180px;
+          height: 200px;
+          border-radius: 20px;
+          .title {
+            width: 100%;
+            span {
+              font-size: 16px;
+            }
+          }
+          .text {
+            span {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    .container {
+      .title {
+        .first {
+          font-size: 20px;
+        }
+        .second {
+          font-size: 24px;
+        }
+      }
+      .cards {
+        .card {
+          .icon {
+            img {
+              width: 24px;
+              height: 24px;
+            }
+          }
+          padding: 12px;
+          height: 180px;
+
+          .title {
+            span {
+              font-size: 14px;
+            }
+          }
+          .text {
+            span {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .absolute-container {
+    .container {
+      .title {
+        .first {
+          font-size: 18px;
+        }
+        .second {
+          font-size: 22px;
+        }
+      }
+      .cards {
+        .card {
+          width: 100%;
+          .icon {
+            img {
+              width: 30px;
+              height: 30px;
+            }
+          }
+          padding: 12px;
+          .title {
+            span {
+              font-size: 16px;
+            }
+          }
+          .text {
+            span {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

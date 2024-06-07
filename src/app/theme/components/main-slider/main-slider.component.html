@@ -1,0 +1,17 @@
+<ngx-slick-carousel class="carousel" 
+  #slickModal="slick-carousel" 
+  [config]="slideConfig" 
+  (init)="slickInit($event)">
+  <ng-container *ngFor="let banner of config">
+    <div ngxSlickItem class="absolute-container" [style.backgroundImage]="'url(' + banner.bannerUrl + ')'">
+      <div class="container p-0 m-b-100 lg-m-b-80 md-m-b-60 sm-m-b-50">
+        <div class="text d-flex flex-d-col p-t-180 lg-p-t-80 md-p-t-10 p-l-40 sm-p-l-0">
+          <span class="above-title m-b-16">{{ banner.headline }}</span>
+          <span class="title m-b-28 md-m-b-18"> {{ banner.title }} </span>
+          <span class="subtitle m-b-32 sm-m-b-15"> {{ banner.subtitle }} </span>
+          <button class="general"> {{ banner.button }} </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ngx-slick-carousel>

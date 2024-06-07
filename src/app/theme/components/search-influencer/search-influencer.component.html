@@ -1,0 +1,30 @@
+<div class="absolute-container">
+  <div class="container p-0">
+    <div class="home align-center d-flex m-b-20">
+      <span class="p-l-15">Home</span>
+      <img src="/assets/svg/arrow-down.svg" alt="" />
+      <span>Search influencer</span>
+    </div>
+    <div
+      class="found m-b-30 sm-flex-d-col sm-m-b-20 align-center d-flex justify-space-between"
+    >
+      <div class="left sm-m-b-20 d-flex align-center">
+        <div class="box d-flex justify-center align-center">
+          <img src="/assets/svg/box.svg" alt="" />
+        </div>
+        <img class="more p-lr-15" src="/assets/svg/more.svg" alt="" />
+        <span class="number">50</span>
+        <span class="p-l-15">Influencers Found</span>
+      </div>
+
+      <div class="input">
+        <select name="Select" id="">
+          <option value="" disabled>Select</option>
+          <option *ngFor="let defaults of default" [value]="default">
+            {{ defaults }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

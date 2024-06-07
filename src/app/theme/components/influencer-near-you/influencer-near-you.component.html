@@ -1,0 +1,19 @@
+<div class="absolute-container">
+  <div class="container p-0">
+    <div class="title d-flex justify-center m-b-50">
+      <span> {{ config.title }} </span>
+    </div>
+    <div
+      class="countries d-flex d-wrap justify-space-between lg-justify-center m-b-100 md-m-b-80 sm-m-b-40"
+    >
+      <ng-container *ngFor="let column of config.columns">
+        <div class="column lg-m-b-20">
+          <div class="title sm-t-center m-b-16">{{ column.title }}</div>
+          <ng-container *ngFor="let item of column.items">
+            <div class="subtitle m-b-12 sm-m-b-5">{{ item.title }}</div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

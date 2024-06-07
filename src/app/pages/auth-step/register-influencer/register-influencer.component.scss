@@ -1,0 +1,116 @@
+.card {
+  border-radius: 10px;
+  width: 640px;
+  min-height: 490px;
+  background-color: var(--white);
+  .text-container {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 90px;
+    width: 100%;
+    background-color: var(--light-red);
+
+    .title {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    .subtitle {
+      font-family: "Manrope", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--white);
+    }
+  }
+  .checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    .checkbox {
+      .custom-checkbox + label::before {
+        background-image: url("/assets/svg/done-dark.svg");
+        width: 20px;
+        height: 20px;
+        border-radius: 7px;
+      }
+      .custom-checkbox:checked + label::before {
+        background-image: url("/assets/svg/done-white.svg");
+      }
+      label {
+        font-family: "Manrope", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #595f67;
+      }
+    }
+    .input {
+      border: 1px solid #d0d5dd;
+      border-radius: 10px;
+      padding: 0px 16px;
+      width: 100%;
+      height: 52px;
+    }
+  }
+
+  .buttons {
+    .general {
+      width: 136px;
+      height: 50px;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .back {
+      background-color: var(--white);
+      border: 1px solid;
+      border-color: var(--light-red);
+      color: var(--light-red);
+    }
+  }
+}
+
+@media (max-width: 656px) {
+  .card {
+    width: auto;
+    border-radius: 0px;
+
+    height: 100%;
+
+    .text-container {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+    }
+    .inputs {
+      .input {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// @media (max-width: 576px) {
+//   .card {
+//     .checkboxes {
+//       .input {
+//         max-width: 220px;
+//       }
+//     }
+//   }
+// }
+
+// @media (max-width: 425px) {
+//   .card {
+//     .checkboxes {
+//       .input {
+//         max-width: 170px;
+//       }
+//     }
+//   }
+// }

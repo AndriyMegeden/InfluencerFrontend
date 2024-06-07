@@ -1,0 +1,31 @@
+<div class="absolute-container">
+  <div class="container d-flex flex-d-col justify-end p-0">
+    <div class="title d-flex justify-center m-b-50 md-m-b-30 sm-m-b-20">
+      <span> {{ config.title }} </span>
+    </div>
+    <div
+      class="articles d-flex flex-d-col justify-center m-b-120 md-m-b-80 sm-m-b-40"
+    >
+      <ng-container *ngFor="let item of config.items">
+        <div class="article d-flex align-center flex-d-col justify-center">
+          <div
+            class="name w-100 d-flex justify-space-between m-tb-24"
+            (click)="item.active = !item.active"
+          >
+            <span> {{ item.title }} </span>
+            <img
+              src="/assets/svg/arrow-bottom.svg"
+              alt=""
+              [ngClass]="{ rotated: item.active }"
+            />
+          </div>
+          <ng-container *ngIf="item.active">
+            <div class="info m-b-24 p-r-20">
+              <span> {{ item.subtitle }} </span>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

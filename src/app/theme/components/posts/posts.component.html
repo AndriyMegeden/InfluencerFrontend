@@ -1,0 +1,93 @@
+<div class="absolute-container">
+  <div class="border m-b-40">
+    <div class="container p-0">
+      <div class="padding-container p-lr-24 sm-p-lr-16">
+        <div class="posts-switcher w-100 d-flex flex-d-row align-center m-b-30">
+          <button
+            class="general"
+            *ngFor="let switcher of postSwitchers"
+            [class.active]="activeButton === switcher.text"
+            (click)="setActive(switcher.text)"
+          >
+            {{ switcher.text }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="activeButton === 'RecentPost'" class="absolute-container">
+  <div class="container cards p-0">
+    <div
+      class="padding-container xl-justify-center d-wrap d-flex justify-space-between sm-p-lr-16"
+    >
+      <ng-container *ngFor="let post of posts">
+        <div class="post m-lr-10 m-b-40 p-7 d-flex justify-center flex-d-col">
+          <img class="m-b-7" src="{{ post.img }}" alt="" />
+          <div class="info d-flex m-l-5">
+            <div class="like m-r-22 d-flex align-center">
+              <img class="m-r-6" src="/assets/svg/like.svg" alt="" />
+              <span>{{ post.like }}</span>
+            </div>
+            <div class="comments d-flex align-center">
+              <img class="m-r-6" src="/assets/svg/comment.svg" alt="" />
+              <span>{{ post.comment }}</span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <app-colaborations></app-colaborations>
+</div>
+<div *ngIf="activeButton === 'Insight'" class="absolute-container">
+  <div class="container cards p-0">
+    <div class="padding-container p-lr-24 d-wrap d-flex flex-d-col sm-p-lr-16">
+      <div *ngFor="let category of categories" class="insight-title m-b-24">
+        <div class="m-b-24">{{ category.title }}</div>
+        <div class="wrap vs-justify-center d-flex d-wrap">
+          <div
+            *ngFor="let text of category.text"
+            class="categories m-r-16 m-b-16 d-flex justify-center align-center"
+          >
+            <div class="text">{{ text }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="activeButton === 'Bio'" class="absolute-container">
+  <div class="container cards p-0">
+    <div class="padding-container p-lr-24 d-wrap d-flex flex-d-col sm-p-lr-16">
+      <div *ngFor="let user of userInfo" class="bio-wrap m-b-50">
+        <div class="bio-title m-b-16">{{ user.title }}</div>
+        <div class="wrapper d-flex">
+          <div *ngIf="user.subtitle" class="subtitle-wrap">
+            <div *ngFor="let subtitle of user.subtitle" class="subtitle m-b-16">
+              {{ subtitle }}
+            </div>
+          </div>
+          <div *ngIf="user.text" class="text-wrap">
+            <div *ngFor="let text of user.text" class="text m-b-16">
+              {{ text }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="activeButton === 'Experience'" class="absolute-container">
+  <div class="container cards p-0">
+    <div class="padding-container p-lr-24 d-wrap d-flex flex-d-col sm-p-lr-16">
+      <div *ngFor="let experience of data" class="exp-wrap m-b-50">
+        <div class="exp-title m-b-16">{{ experience.title }}</div>
+        <div class="exp-text">{{ experience.text }}</div>
+      </div>
+    </div>
+  </div>
+</div>

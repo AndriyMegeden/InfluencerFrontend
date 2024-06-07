@@ -1,0 +1,74 @@
+<div class="absolute-container d-flex">
+  <div class="left-container"></div>
+  <div class="right-container"></div>
+  <div class="center-absolute-container">
+    <div class="container p-b-0 d-flex">
+      <div class="left-content md-p-t-0 p-t-80">
+        <ng-container *ngIf="page === 'login'; else elseTemplate">
+          <div class="title-login xl-m-r-10 flex-d-col d-flex m-b-20">
+            Elevate Your Brand with Influencer
+          </div>
+          <div class="subtitle-login m-b-100 d-flex flex-d-col">
+            <span>Clarity gives you the blocks & components you</span> 
+            <span>need to create a truly professional website.</span> 
+          </div>
+          <div class="image">
+            <img src="/assets/svg/hi-login.svg" alt="" />
+          </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <div class="title xl-m-r-10 flex-d-col d-flex m-b-20">
+            Elevate Your Brand with Influencer
+          </div>
+          <div class="subtitle m-b-30 d-flex flex-d-col">Sign up and get:</div>
+          <div class="text-container m-b-20 d-flex flex-d-row align-center">
+            <img class="m-r-10" src="/assets/svg/checkmark-circle.svg" alt="" />
+            <div class="text">
+              <span>300000+ Unique Influencers across Platforms</span>
+            </div>
+          </div>
+          <div class="text-container m-b-20 d-flex flex-d-row align-center">
+            <img class="m-r-10" src="/assets/svg/checkmark-circle.svg" alt="" />
+            <div class="text">
+              <span
+                >Super Flexible Search like #tags, bio, profession and
+                more</span
+              >
+            </div>
+          </div>
+          <div class="text-container m-b-20 d-flex flex-d-row align-center">
+            <img class="m-r-10" src="/assets/svg/checkmark-circle.svg" alt="" />
+            <div class="text">
+              <span
+                >Robust Scoring system for every Influencer & every
+                Profile</span
+              >
+            </div>
+          </div>
+          <div class="text-container m-b-30 d-flex flex-d-row align-center">
+            <img class="m-r-10" src="/assets/svg/checkmark-circle.svg" alt="" />
+            <div class="text">
+              <span>Advanced Search filters with extensive filters</span>
+            </div>
+          </div>
+          <div class="subtitle m-b-100 d-flex flex-d-col">And best of all,</div>
+          <div class="companies d-flex flex-d-col">
+            <div class="brands m-b-20 d-flex m-l-40">
+              <span>Trusted by Top Brands & Companies</span>
+            </div>
+            <div class="images d-flex align-center justify-space-between">
+              <img class="wsj" src="/assets/svg/wsj.svg" alt="" />
+              <img class="forbes" src="/assets/svg/forbes.svg" alt="" />
+              <img class="apple" src="/assets/svg/apple.svg" alt="" />
+              <img class="mashable" src="/assets/svg/mashable.svg" alt="" />
+              <img class="google" src="/assets/svg/google-footer.svg" alt="" />
+            </div>
+          </div>
+        </ng-template>
+      </div>
+      <div class="right-content md-p-t-0 p-t-80">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

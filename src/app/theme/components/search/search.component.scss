@@ -1,0 +1,114 @@
+.absolute-container {
+  .container {
+    max-width: 1140px;
+    .text {
+      .subtitle {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1.42857;
+        letter-spacing: 0.01em;
+        text-align: center;
+        color: var(--light-red);
+      }
+      .title {
+        width: 750px;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 1.5;
+        letter-spacing: 0.02em;
+        text-align: center;
+        color: var(--dark-background);
+      }
+    }
+
+    .filter {
+      border-radius: 15px;
+      background: var(--filter);
+      height: auto;
+      .inputs {
+        width: 100%;
+        .title {
+          font-family: "Rubik", sans-serif;
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 1.4;
+          color: var(--white);
+        }
+        .wrap {
+          width: 100%;
+          .text {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.45;
+            color: var(--white);
+          }
+          .input {
+            width: 100%;
+            height: 48px;
+            background: var(--input-background);
+            input {
+              font-family: "Inter", sans-serif;
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 1.6;
+              color: var(--placeholder-gray);
+            }
+          }
+        }
+      }
+      .general {
+        border-radius: 10px;
+        width: 165px;
+        height: 50px;
+        background-color: var(--white);
+        color: var(--light-red);
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .absolute-container {
+    .container {
+      .text {
+        .title {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .absolute-container {
+    .container {
+      .text {
+        .title {
+          width: auto;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    .container {
+      .text {
+        .title {
+          width: auto;
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}

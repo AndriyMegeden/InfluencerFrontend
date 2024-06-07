@@ -1,0 +1,48 @@
+<div class="absolute-container">
+  <div
+    class="container p-0 d-flex justify-center p-b-0 m-b-100 lg-m-b-80 md-m-b-60 sm-m-b-50 lg-flex-d-col"
+  >
+    <div
+      class="text m-r-40 lg-m-b-40 sm-m-b-30 lg-m-r-0 d-flex flex-d-col justify-center p-l-30 xl-p-l-0"
+    >
+      <div class="title m-b-24 lg-m-b-20 sm-m-b-15">
+        <span> {{ config.title }} </span>
+      </div>
+      <div class="subtitle">
+        <span> {{ config.subtitle }} </span>
+      </div>
+    </div>
+    <div class="cards d-flex lg-justify-center sm-d-wrap">
+      <!-- <div class="card m-r-25 sm-m-b-30 sm-m-r-0">
+        <div class="image">
+          <img src="/assets/png/card-marketing.png" alt="" />
+        </div>
+        <div class="interact active">
+          <div class="p-26">
+            <div class="title m-b-24">Influencers</div>
+            <div class="subtitle m-b-24">
+              Lorem Ipsum is simply dummy text of the printing and industry.
+            </div>
+            <button class="general">Sign up</button>
+          </div>
+        </div>
+      </div> -->
+      <ng-container *ngFor="let item of config.items">
+        <div class="card m-r-25 sm-m-b-30 sm-m-r-0">
+          <div class="image">
+            <img [src]="item.image" alt="" />
+          </div>
+          <div class="interact" [class.active]="item.active">
+            <div class="p-26">
+              <div class="title m-b-24">{{ item.title }}</div>
+              <div class="subtitle m-b-24">
+                {{ item.subtitle }}
+              </div>
+              <button class="general">{{ item.button }}</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

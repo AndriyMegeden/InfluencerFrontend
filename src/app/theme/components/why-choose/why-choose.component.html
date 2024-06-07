@@ -1,0 +1,28 @@
+<div class="absolute-container">
+  <div class="container p-0">
+    <div class="title d-flex flex-d-col m-b-50 md-m-b-40 vs-m-b-20">
+      <span class="first m-b-10"> {{ config.title }} </span>
+      <span class="second"> {{ config.subtitle }} </span>
+      <div class="line"></div>
+    </div>
+    <div
+      class="cards d-flex justify-space-between sm-d-wrap sm-justify-center m-b-50 md-m-b-40 vs-m-b-20"
+    >
+      <ng-container *ngFor="let option of config.items">
+        <div class="card sm-m-b-20" [class.active]="option.active">
+          <div class="icon m-b-50 xl-m-b-20 md-m-b-10">
+            <img [src]="option.icon" alt="" />
+          </div>
+          <div
+            class="title md-d-wrap d-flex flex-d-col md-flex-d-row m-b-16 md-m-b-10"
+          >
+            <span class="md-m-r-10"> {{ option.title }} </span>
+          </div>
+          <div class="text">
+            <span> {{ option.subtitle }} </span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

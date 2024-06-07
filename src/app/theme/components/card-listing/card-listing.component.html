@@ -1,0 +1,66 @@
+<ng-container *ngFor="let card of cards">
+  <div class="wrap">
+    <div class="card m-b-28 lg-m-r-0 d-flex sm-flex-d-col">
+      <div class="photo">
+        <img src="{{ card.img }}" alt="" />
+        <div class="category d-flex justify-center align-center">
+          <span>{{ card.category }}</span>
+        </div>
+      </div>
+      <div class="info p-20">
+        <div class="title align-center d-flex justify-space-between m-b-16">
+          <div class="d-flex d-wrap">
+            <span class="name m-r-8">{{ card.name }}</span>
+            <span class="name">{{ card.surname }}</span>
+          </div>
+          <div class="d-flex align-center">
+            <img
+              class="m-r-15 m-l-10"
+              src="/assets/svg/check-mark.svg"
+              alt=""
+            />
+            <div class="percent d-flex justify-center align-center">
+              <span>{{ card.percent + "%" }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="socials">
+          <div class="top d-flex m-b-16">
+            <div class="d-flex align-center m-r-32">
+              <img
+                class="m-r-8"
+                src="/assets/svg/instagram-filter.svg"
+                alt=""
+              />
+              <span>{{ card.instagram }}</span>
+            </div>
+            <div class="d-flex align-center">
+              <img class="m-r-8" src="/assets/svg/facebook-filter.svg" alt="" />
+              <span>{{ card.facebook }}</span>
+            </div>
+          </div>
+          <div class="bottom d-flex m-b-16">
+            <div class="d-flex align-center m-r-32 m-b-16">
+              <img class="m-r-8" src="/assets/svg/tik-tok-filter.svg" alt="" />
+              <span>{{ card.tikTok }}</span>
+            </div>
+            <div class="d-flex align-center m-b-16">
+              <img class="m-r-8" src="/assets/svg/you-tube-filter.svg" alt="" />
+              <span>{{ card.youTube }}</span>
+            </div>
+          </div>
+          <div class="geolocation d-flex align-center m-b-16">
+            <img class="m-r-8" src="/assets/svg/location-filter.svg" alt="" />
+            <div class="d-flex d-wrap">
+              <span class="m-r-8">{{ card.city + "," }}</span>
+              <span>{{ card.country }}</span>
+            </div>
+          </div>
+          <button routerLink="/main/profile" class="general">
+            Get Contact INFO
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

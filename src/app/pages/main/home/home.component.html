@@ -1,0 +1,16 @@
+<div class="padding-container p-lr-24 sm-p-lr-16">
+  <app-main-slider [config]="homeBanner"></app-main-slider>
+  <app-brands [config]="brands"></app-brands>
+  <app-marketing [config]="marketingConfig"></app-marketing>
+  <div
+    class="absolute-container why-choose m-b-100 md-m-b-70 sm-m-b-40 vs-m-b-20"
+  >
+    <app-why-choose [config]="whyChooseInfluencer"></app-why-choose>
+    <app-why-choose [config]="whyChooseBrand"></app-why-choose>
+  </div>
+  <app-top-influencer [config]="topInfluencer"></app-top-influencer>
+  <app-questions [config]="questions"></app-questions>
+  <app-influencer-near-you
+    [config]="influencerNearYou"
+  ></app-influencer-near-you>
+</div>

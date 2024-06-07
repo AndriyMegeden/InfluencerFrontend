@@ -1,0 +1,129 @@
+.wrap {
+  .card {
+    &.with-margin {
+      margin-right: 28px;
+    }
+    width: 556px;
+    height: 268px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    .photo {
+      position: relative;
+      width: 51%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+      .category {
+        top: 20px;
+        left: 20px;
+        position: absolute;
+        border-radius: 4px;
+        width: 75px;
+        height: 32px;
+        background-color: var(--card);
+        span {
+          font-family: "Inter", sans-serif;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 0.85714;
+          text-transform: uppercase;
+          color: var(--black);
+        }
+      }
+    }
+    .info {
+      width: 49%;
+      .title {
+        .name {
+          font-family: "Inter", sans-serif;
+          font-weight: 700;
+          font-size: 24px;
+          color: var(--dark-background);
+        }
+        .percent {
+          border: 2px solid var(--green);
+          border-radius: 4px;
+          width: 53px;
+          height: 26px;
+          span {
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 1;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--green);
+          }
+        }
+      }
+    }
+    .socials {
+      .top {
+        span {
+          font-family: "Inter", sans-serif;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 1.66667;
+          color: var(--light-gray);
+        }
+      }
+      .bottom {
+        border-bottom: 1px solid var(--border);
+        span {
+          font-family: "Inter", sans-serif;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 1.66667;
+          color: var(--light-gray);
+        }
+      }
+      .geolocation {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.42857;
+        color: var(--light-gray);
+      }
+      .general {
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+        color: var(--white);
+      }
+    }
+  }
+}
+
+@media (max-width: 1150px) {
+  .wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrap {
+    .card {
+      height: auto;
+      .photo {
+        width: 100%;
+        img {
+          border-top-right-radius: 10px;
+          border-bottom-right-radius: 0px;
+          border-bottom-left-radius: 0px;
+        }
+      }
+      .info {
+        width: auto;
+      }
+    }
+  }
+}

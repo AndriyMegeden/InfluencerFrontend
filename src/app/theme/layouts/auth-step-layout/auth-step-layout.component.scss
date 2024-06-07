@@ -1,0 +1,84 @@
+.absolute-container {
+  background-color: var(--light-background);
+  .container {
+    padding: 0;
+    height: 100vh;
+    .content {
+      height: 100%;
+      .step-container {
+        .achievement {
+          .circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid;
+
+            &.left {
+              border-color: var(--green);
+            }
+            &.right {
+              border-color: var(--dark-background);
+            }
+            &.active {
+              border-color: var(--green);
+            }
+          }
+          .strip {
+            width: 300px;
+            height: 3px;
+            background-color: var(--green);
+          }
+        }
+        .text {
+          font-family: "Manrope", sans-serif;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 1.8;
+          color: var(--dark-background);
+          .left {
+            width: 215px;
+          }
+          .right {
+            width: 230px;
+          }
+          div {
+            width: 200px;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    .container {
+      .content {
+        height: 100%;
+        .step-container {
+          width: 80%;
+          .achievement {
+            .circle {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              border: 2px solid;
+            }
+            .strip {
+              width: 70%;
+            }
+          }
+          .text {
+            div {
+              position: relative;
+              span {
+                padding: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

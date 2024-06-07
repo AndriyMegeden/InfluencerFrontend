@@ -1,0 +1,61 @@
+.card {
+  border-radius: 10px;
+  width: auto;
+  min-height: 490px;
+  background-color: var(--white);
+  .text-container {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 90px;
+    width: 100%;
+    background-color: var(--light-red);
+    .title {
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--white);
+    }
+    .subtitle {
+      font-family: "Manrope", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--white);
+    }
+  }
+  .inputs {
+    .input {
+      width: 460px;
+    }
+  }
+  .buttons {
+    .general {
+      width: 136px;
+      height: 50px;
+      font-family: "Inter", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    width: 100%;
+    border-radius: 0px;
+    height: 100%;
+    .text-container {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+    }
+    .inputs {
+      .input {
+        width: 100%;
+      }
+    }
+  }
+}

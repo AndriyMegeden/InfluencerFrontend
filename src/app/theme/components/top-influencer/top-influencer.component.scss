@@ -1,0 +1,183 @@
+.absolute-container {
+  background-image: url("/assets/svg/question-background.svg");
+  height: 760px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  .container {
+    .title {
+      .second {
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 38px;
+        line-height: 1.05263;
+        color: var(--dark-background);
+      }
+      .line {
+        width: 100%;
+        height: 20px;
+        background-position: center center;
+        background-image: url("/assets/svg/red-line.svg");
+        background-repeat: no-repeat;
+      }
+    }
+    .cards {
+      height: 100%;
+      .card {
+        width: 320px;
+        height: 480px;
+        position: relative;
+        border-radius: 20px;
+        .content {
+          width: 100%;
+          height: 100%;
+          border-radius: 20px;
+          .img {
+            position: absolute;
+            img {
+              width: 100%;
+            }
+          }
+          .text {
+            position: absolute;
+            height: 39px;
+            .style {
+              font-family: "Inter", sans-serif;
+              font-weight: 600;
+              font-size: 14px;
+              text-transform: uppercase;
+              color: var(--white);
+            }
+            .name {
+              font-family: "Inter", sans-serif;
+              font-weight: 700;
+              font-size: 20px;
+              color: var(--white);
+            }
+            &.active-text {
+              .style {
+                z-index: 3;
+                color: var(--black);
+              }
+              .name {
+                z-index: 3;
+                color: var(--black);
+              }
+            }
+          }
+          .active {
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0px 1px 0px 0 var(--light-red);
+            z-index: 2;
+            background-color: var(--white);
+            width: 320px;
+            height: 135px;
+            position: absolute;
+            .general {
+              top: 70px;
+              left: 160px;
+              position: absolute;
+              width: 135px;
+              height: 42px;
+              z-index: 4;
+            }
+          }
+          .active-image {
+            width: 40px;
+            height: 40px;
+            img {
+              width: 50px;
+              height: 50px;
+              left: 255px;
+              top: 15px;
+              z-index: 3;
+              position: absolute;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .absolute-container {
+    .container {
+      .title {
+        .second {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .absolute-container {
+    height: 680px;
+    .container {
+      .title {
+        .second {
+          font-size: 28px;
+        }
+      }
+      .cards {
+        .card {
+          width: 275px;
+          height: 415px;
+
+          .content {
+            .img {
+              img {
+                width: 275px;
+              }
+            }
+            .text {
+              width: 234px;
+              z-index: 2;
+            }
+            .active {
+              width: 275px;
+              height: 135px;
+
+              .general {
+                left: 135px;
+                width: 120px;
+              }
+            }
+            .active-image {
+              img {
+                left: 215px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    display: none;
+    .container {
+      .title {
+        .second {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+// @media (max-width: 425px) {
+//   .absolute-container {
+//     .container {
+//       .title {
+//         .second {
+//           font-size: 22px;
+//         }
+//       }
+//     }
+//   }
+// }

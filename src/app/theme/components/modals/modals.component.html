@@ -1,0 +1,98 @@
+<div [ngSwitch]="modalType" class="modal-form">
+  <div class="modal-background" *ngIf="isOpen"></div>
+  <ng-container *ngSwitchCase="isOpen && 'contact'" >
+    <div class="modal-content">
+      <div class="title p-lr-15 d-flex justify-space-between align-center">
+        <span>Download Contact Details</span>
+        <img (click)="closeModal()" src="/assets/svg/close-modal.svg" alt="" />
+      </div>
+      <div class="form p-50 sm-p-20">
+        <div class="input m-b-20">
+          <input class="p-l-10" placeholder="Email" type="text" />
+        </div>
+        <div class="input m-b-20">
+          <input class="p-l-10" placeholder="Mobile Number" type="text" />
+        </div>
+        <button class="general">DOWNLOAD</button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngSwitchCase="isOpen && 'successfull'">
+    <div class="modal-content successfull-modal">
+      <div class="title p-lr-15 d-flex justify-space-between align-center">
+        <span>Download Contact Details</span>
+        <img (click)="closeModal()" src="/assets/svg/close-modal.svg" alt="" />
+      </div>
+
+      <div class="form p-50 sm-p-20">
+        <div class="successfull d-flex justify-center align-center m-b-30">
+          <img class="m-r-16" src="/assets/svg/modal-done.svg" alt="" />
+          <span>OTP sent to your mobile successfully!</span>
+        </div>
+        <div class="input m-b-20">
+          <input class="p-l-10" placeholder="Email" type="text" />
+        </div>
+        <div class="input m-b-20">
+          <input class="p-l-10" placeholder="Mobile Number" type="text" />
+        </div>
+        <div class="input m-b-20">
+          <input class="p-l-10" placeholder="Enter the OTP" type="text" />
+        </div>
+        <button class="general">DOWNLOAD</button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="isOpen && 'share'" >
+    <div class="modal-content share-modal">
+      <div class="title p-lr-15 d-flex justify-space-between align-center">
+        <span>Share with</span>
+        <img (click)="closeModal()" src="/assets/svg/close-modal.svg" alt="" />
+      </div>
+
+      <div class="socials d-flex flex-d-col align-center justify-center p-50 sm-p-20" >
+        <div class="buttons-share d-flex align-center justify-space-between w-100 m-b-20" >
+          <div class="social active-social d-flex flex-d-col justify-center align-center">
+            <div class="social-image d-flex justify-center align-center m-b-10">
+              <img src="/assets/svg/instagram-share.svg" alt="" />
+            </div>
+            <span>Instagram</span>
+          </div>
+          <div class="social d-flex flex-d-col justify-center align-center">
+            <div class="social-image d-flex justify-center align-center m-b-10">
+              <img src="/assets/svg/tiktok-share.svg" alt="" />
+            </div>
+            <span>TikTok</span>
+          </div>
+          <div class="social d-flex flex-d-col justify-center align-center">
+            <div class="social-image d-flex justify-center align-center m-b-10">
+              <img src="/assets/svg/facebook-share.svg" alt="" />
+            </div>
+            <span>Facebook</span>
+          </div>
+          <div class="social d-flex flex-d-col justify-center align-center">
+            <div class="social-image d-flex justify-center align-center m-b-10">
+              <img src="/assets/svg/youtube-share.svg" alt="" />
+            </div>
+            <span>YouTube</span>
+          </div>
+          <div class="social d-flex flex-d-col justify-center align-center">
+            <div class="social-image d-flex justify-center align-center m-b-10">
+              <img src="/assets/svg/more-share.svg" alt="" />
+            </div>
+            <span>More</span>
+          </div>
+        </div>
+        <span class="link m-b-10">Or share with link</span>
+        <div class="input m-b-20 d-flex align-center">
+          <input
+            class="p-l-10"
+            placeholder="https://www.yourlink.com/NlfVhYygR9mAQ..."
+            type="text"
+          />
+          <img class="p-r-10" src="/assets/svg/link-modal.svg" alt="" />
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,111 @@
+<div class="absolute-container">
+  <div class="container p-0">
+    <div class="text d-flex flex-d-col align-center m-b-40">
+      <span class="subtitle m-b-20">Wireframer Influencer Platform</span>
+      <span class="title"
+        >2 Lack + Aspiring Models and Actors Looking for Paid Modeling and
+        Acting Opportunity</span
+      >
+    </div>
+
+    <div
+      class="filter p-32 m-b-20 lg-p-20 sm-p-15 d-flex flex-d-col justify-center align-center"
+    >
+      <form
+        class="w-100 d-flex flex-d-col justify-center align-center"
+        [formGroup]="reactiveForm"
+        (ngSubmit)="submitForm()"
+      >
+        <div class="inputs d-flex flex-d-col lg-p-20 sm-p-15">
+          <span class="title m-b-18"> Search Influencer</span>
+          <div class="top d-flex flex-d-row m-b-18 sm-d-wrap">
+            <div class="wrap d-flex flex-d-col m-r-20 sm-m-r-0 sm-m-b-20">
+              <span class="text">All genders</span>
+
+              <div class="input m-t-10">
+                <select id="gender" formControlName="gender">
+                  <option value="" disabled>Select</option>
+                  <option *ngFor="let gender of genders" [value]="gender">
+                    {{ gender }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="wrap m-r-20 sm-m-r-0 sm-m-b-20">
+              <span class="text">City</span>
+              <div class="input m-t-10">
+                <select id="city" formControlName="city">
+                  <option value="" disabled>Select</option>
+                  <option *ngFor="let city of citys" [value]="city">
+                    {{ city }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="wrap sm-m-r-0 sm-m-b-20">
+              <span class="text">Sort by Followers</span>
+              <div class="input m-t-10">
+                <select id="followers" formControlName="followers">
+                  <option value="" disabled>Select</option>
+                  <option
+                    *ngFor="let followers of follower"
+                    [value]="followers"
+                  >
+                    {{ followers }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="bottom d-flex flex-d-row m-b-18 sm-d-wrap">
+            <div class="wrap m-r-20 sm-m-r-0 sm-m-b-20">
+              <span class="text">All Cetegories</span>
+              <div class="input m-t-10">
+                <select id="cetegories" formControlName="cetegories">
+                  <option value="" disabled>Select</option>
+                  <option
+                    *ngFor="let cetegories of cetegory"
+                    [value]="cetegories"
+                  >
+                    {{ cetegories }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="wrap m-r-20 sm-m-r-0 sm-m-b-20">
+              <span class="text">Engangement Percent</span>
+              <div class="input m-t-10">
+                <select class="dropdown" id="percent" formControlName="percent">
+                  <option value="" disabled>5% - 10%</option>
+                  <option *ngFor="let percent of percents" [value]="percent">
+                    {{ percent }}
+                  </option>
+                </select>
+                <input formControlName="percent" type="select" />
+              </div>
+            </div>
+
+            <div class="wrap sm-m-r-0 sm-m-b-20">
+              <span class="text">Influencer Name</span>
+              <div class="input d-flex align-center m-t-10">
+                <img
+                  class="p-l-15 p-r-10"
+                  src="/assets/svg/filter-search.svg"
+                  alt=""
+                />
+                <input
+                  placeholder="Search here.."
+                  formControlName="name"
+                  type="search"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="general">Search</button>
+      </form>
+    </div>
+  </div>
+</div>

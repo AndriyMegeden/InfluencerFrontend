@@ -1,0 +1,56 @@
+<div class="absolute-container">
+  <div class="container d-flex justify-center flex-d-col p-0">
+    <div class="banner">
+      <img src="/assets/png/banner.png" alt="" />
+      <div class="share">
+        <button (click)="openModal('share')" class="general d-flex justify-center align-center">
+          <img class="m-r-10" src="/assets/svg/share.svg" alt="" />
+          <span> Share</span>
+        </button>
+      </div>
+    </div>
+    <div class="w-100 wrap-container d-flex justify-center">
+      <div class="wrap w-100 justify-center flex-d-col m-b-20">
+        <div class="img">
+          <img src="/assets/png/avatar.png" alt="" />
+        </div>
+
+        <div
+          class="info p-b-0 p-t-0 md-p-t-16 d-flex justify-space-between md-flex-d-col md-align-end p-24 sm-p-16 md-justify-start"
+        >
+          <div class="avatar d-flex md-m-b-20">
+            <div class="text d-flex flex-d-col justify-center md-justify-start">
+              <div class="name m-b-8">
+                <span class="m-r-8">Nisha</span>
+                <span>Lamba</span>
+              </div>
+              <div class="rate d-flex">
+                <span class="m-r-8">Engagement Rate</span>
+                <div class="percent d-flex justify-center align-center">
+                  <span>3.09</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact d-flex flex-d-col justify-center">
+            <button
+            (click)="openModal('contact')"
+              class="general m-b-8 number d-flex justify-start align-center"
+            >
+              <img
+                class="m-r-10"
+                src="/assets/svg/contact-profile.svg"
+                alt=""
+              />
+              <span>+97846XXXXXX</span>
+            </button>
+            <button (click)="openModal('successfull')" class="general email d-flex justify-start align-center">
+              <img class="m-r-10" src="/assets/svg/email-profile.svg" alt="" />
+              <span>nisalaXXXXXXXXXX</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

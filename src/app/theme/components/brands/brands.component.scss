@@ -1,0 +1,42 @@
+.absolute-container {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .absolute-container {
+    .container {
+      .icons {
+        img:nth-child(1) {
+          width: 100px;
+        }
+        img:nth-child(2) {
+          width: 60px;
+        }
+        img:nth-child(3) {
+          width: 30px;
+        }
+        img:nth-child(4) {
+          width: 100px;
+        }
+        img:nth-child(5) {
+          width: 40px;
+        }
+        img:nth-child(6) {
+          width: 60px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    .container {
+      .icons {
+        height: 110px;
+      }
+    }
+  }
+}

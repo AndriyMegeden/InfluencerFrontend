@@ -1,0 +1,249 @@
+.absolute-container {
+  width: 100%;
+  min-height: 600px;
+
+  .container {
+    width: 100%;
+    min-height: 600px;
+    background-color: var(--black);
+    .inner-container {
+      .top-part {
+        height: 180px;
+        border-bottom: 1px solid var(--light-red);
+        .title {
+          span {
+            font-family: "Inter", sans-serif;
+            font-weight: 700;
+            font-size: 27px;
+            line-height: 1.39286;
+            color: var(--white);
+          }
+        }
+        .data {
+          .input {
+            background-color: var(--white);
+            border-radius: 8px;
+            width: 380px;
+            height: 50px;
+            input {
+              font-family: "Inter", sans-serif;
+              font-weight: 400;
+              font-size: 15px;
+              line-height: 1.73333;
+              color: var(--dark-background);
+            }
+          }
+          button {
+            background-color: var(--black);
+            border: 1px solid var(--light-red);
+            border-radius: 8px;
+            width: 165px;
+            height: 50px;
+            span {
+              font-family: "Poppins", sans-serif;
+              font-weight: 600;
+              font-size: 12px;
+              letter-spacing: 0.05em;
+              text-transform: uppercase;
+              text-align: center;
+              color: var(--white);
+            }
+          }
+        }
+      }
+      .footer-info {
+        .button-part {
+          .company {
+            display: none;
+          }
+        }
+        .button-part {
+          .logo-part {
+            width: 230px;
+            height: 190px;
+            .logo {
+              text-align: start;
+              font-family: "Inter", sans-serif;
+              font-weight: 700;
+              font-size: 41px;
+              color: var(--light-red);
+            }
+            .text {
+              font-family: "Inter", sans-serif;
+              font-weight: 400;
+              font-size: 15px;
+              line-height: 1.6;
+              color: var(--silver);
+            }
+            img {
+              width: 117px;
+              height: 15px;
+            }
+          }
+        }
+        .info {
+          div {
+            .title {
+              margin-bottom: 30px;
+              font-family: "Inter", sans-serif;
+              font-weight: 600;
+              font-size: 18px;
+              line-height: 1.33333;
+              color: var(--white);
+            }
+            .text {
+              font-family: "Inter", sans-serif;
+              font-weight: 400;
+              font-size: 15px;
+              line-height: 1.33333;
+              color: var(--silver);
+              .email-footer {
+                filter: invert(96%) sepia(97%) saturate(12%) hue-rotate(237deg)
+                  brightness(200%) contrast(103%);
+              }
+            }
+          }
+        }
+      }
+      .buttons {
+        .general {
+          width: 227px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
+
+.under-footer {
+  .copyright {
+    width: 100%;
+    max-height: 40px;
+
+    .container {
+      background-color: var(--light-red);
+      span {
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--white);
+      }
+    }
+  }
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .absolute-container {
+    .container {
+      .inner-container {
+        .top-part {
+          .title {
+            span {
+              font-size: 22px;
+            }
+          }
+          .data {
+            .input {
+              width: auto;
+            }
+            button {
+              width: 100px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .absolute-container {
+    .container {
+      .inner-container {
+        .top-part {
+          .title {
+            span {
+              font-size: 22px;
+            }
+          }
+          .data {
+            .input {
+              width: auto;
+            }
+            button {
+              width: 100px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .under-footer {
+    .copyright {
+      .container {
+        span {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    .container {
+      .inner-container {
+        .top-part {
+          .title {
+            span {
+              font-size: 22px;
+            }
+          }
+          .data {
+            .input {
+              width: auto;
+            }
+            button {
+              width: 100px;
+            }
+          }
+        }
+        .footer-info {
+          .info {
+            .company {
+              display: none;
+            }
+          }
+          .button-part {
+            .company {
+              display: block;
+              .title {
+                font-size: 18px !important;
+              }
+              .text {
+                font-family: "Inter", sans-serif;
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 1.33333;
+                color: var(--silver);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .under-footer {
+    .copyright {
+      .container {
+        span {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}

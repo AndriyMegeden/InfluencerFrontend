@@ -1,0 +1,17 @@
+.absolute-container {
+  &.why-choose {
+    background-position: 100% 75%;
+    background-image: url("/assets/svg/line.svg");
+    background-repeat: no-repeat;
+  }
+  &.questions {
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    &.why-choose {
+      background-image: none;
+    }
+  }
+}

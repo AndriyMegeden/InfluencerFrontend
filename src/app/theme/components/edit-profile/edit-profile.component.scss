@@ -1,0 +1,217 @@
+.absolute-container {
+  .container {
+    .banner {
+      position: relative;
+      max-width: 1440px !important;
+      height: 250px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .share {
+        left: 80%;
+        bottom: 35px;
+        position: absolute;
+        .general {
+          border: 1px solid var(--white);
+          background: none;
+          width: 130px;
+          height: 44px;
+          img {
+            width: 24px;
+            height: 24px;
+          }
+          span {
+            font-family: "Manrope", sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1;
+            color: var(--white);
+          }
+        }
+      }
+    }
+    .wrap-container {
+      max-width: 1440px;
+      .wrap {
+        max-width: 1140px;
+        position: relative;
+        height: 150px;
+        .img {
+          left: 20px;
+          bottom: 22px;
+          position: absolute;
+          width: 183px;
+          height: 183px;
+          border: 4px solid var(--light-red);
+          border-radius: 15px;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+          }
+        }
+        .info {
+          max-width: 1140px;
+          height: 100%;
+          .avatar {
+            margin-left: 250px;
+            height: 100%;
+            .text {
+              .name {
+                span {
+                  font-family: "Manrope", sans-serif;
+                  font-weight: 700;
+                  font-size: 24px;
+                  line-height: 1.35;
+                  letter-spacing: -0.02em;
+                  color: var(--dark-background);
+                }
+              }
+              .rate {
+                span {
+                  font-family: "Manrope", sans-serif;
+                  font-weight: 600;
+                  font-size: 16px;
+                  line-height: 1.8;
+                  color: var(--dark-background);
+                }
+                .percent {
+                  border: 2px solid var(--green);
+                  border-radius: 4px;
+                  width: 51px;
+                  height: 26px;
+                  span {
+                    font-family: "Poppins", sans-serif;
+                    font-weight: 700;
+                    font-size: 12px;
+                    line-height: 1;
+                    text-transform: uppercase;
+                    text-align: center;
+                    color: var(--green);
+                  }
+                }
+              }
+            }
+          }
+          .contact {
+            button {
+              width: 236px;
+              height: 45px;
+            }
+            .email {
+              border: 1px solid var(--black);
+              background: none;
+              span {
+                font-family: "Manrope", sans-serif;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 1.8;
+                text-decoration: underline;
+                text-decoration-skip-ink: none;
+                color: var(--dark-background);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .absolute-container {
+    .container {
+      .banner {
+        height: 175px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .absolute-container {
+    .container {
+      .banner {
+        height: 135px;
+        .share {
+          left: 75%;
+          bottom: 15px;
+          position: absolute;
+          .general {
+            width: 110px;
+          }
+        }
+      }
+      .wrap-container {
+        .wrap {
+          height: auto;
+          .img {
+            bottom: 70px;
+          }
+          .info {
+            .avatar {
+              margin-left: 0px;
+              height: auto;
+            }
+            .contact {
+              button {
+                width: 200px;
+                height: 45px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .absolute-container {
+    .container {
+      .banner {
+        height: 105px;
+        .share {
+          left: 65%;
+          bottom: 15px;
+          position: absolute;
+          .general {
+            width: 110px;
+          }
+        }
+      }
+      .wrap-container {
+        .wrap {
+          height: auto;
+          .img {
+            bottom: 165px;
+            left: 16px;
+            width: 103px;
+            height: 103px;
+          }
+          .info {
+            .avatar {
+              margin-left: 0px;
+              height: auto;
+              .text {
+                .name {
+                  span {
+                    font-size: 20px;
+                  }
+                }
+              }
+            }
+            .contact {
+              button {
+                width: 200px;
+                height: 45px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

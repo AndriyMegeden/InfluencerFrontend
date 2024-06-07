@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./theme/fonts.scss";
+@import "./theme/reset.scss";
+@import "./theme/normalize.scss";
+@import "./theme/bootstrap.scss";
+@import "./theme/buttons.scss";
+@import "./theme/inputs.scss";
+@import "./theme/modals.scss";
+@import "./theme/variables.scss";
+@import "./theme/global.scss";
+
+img,
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1440px;
+  padding-top: 0;
+}
