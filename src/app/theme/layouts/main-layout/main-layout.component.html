@@ -4,4 +4,5 @@
   <ng-content></ng-content>
 </div>
 
-<app-footer></app-footer>
+<app-footer (openModalEvent)="openModal($event)"></app-footer>
+<app-modals [isOpen]="isModalOpen" [modalType]="modalType" (closeModalEvent)="closeModal()"></app-modals>

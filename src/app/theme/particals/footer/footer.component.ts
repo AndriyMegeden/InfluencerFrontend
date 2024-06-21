@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
+  @Output() openModalEvent = new EventEmitter<string>();
 
+  openModal(type: string) {
+    this.openModalEvent.emit(type);
+  }
 }

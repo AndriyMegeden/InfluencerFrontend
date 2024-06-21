@@ -7,7 +7,9 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
-
+.small-content {
+  min-height: auto !important;
+}
 .modal-content {
   &.share-modal {
     .socials {
@@ -74,6 +76,8 @@
   background-color: var(--white);
   border-radius: 10px;
   z-index: 1001;
+
+
   .title {
     border-radius: 10px 10px 0 0;
     width: auto;
@@ -100,6 +104,9 @@
         line-height: 1.8;
         color: var(--dark-background);
       }
+      .notification {
+        font-size: 26px;
+      }
     }
     .input {
       input {
@@ -111,6 +118,10 @@
 }
 
 @media (max-width: 576px) {
+  .small-content {
+    width: 100%;
+    height: 100%;
+  }
   .modal-content {
     width: 100%;
     height: 100%;

@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './main-layout.component.scss'
 })
 export class MainLayoutComponent {
+  isModalOpen: boolean = false;
+  modalType: string = '';
 
+  openModal(type: string) {
+    this.modalType = type;
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
 }
