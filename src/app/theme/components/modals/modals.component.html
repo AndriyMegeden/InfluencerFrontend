@@ -57,33 +57,61 @@
           class="buttons-share d-flex align-center justify-space-between w-100 m-b-20"
         >
           <div
-            class="social active-social d-flex flex-d-col justify-center align-center"
+            [class.active-social]="activeButton === 'instagram'"
+            class="social d-flex flex-d-col justify-center align-center"
           >
-            <div class="social-image d-flex justify-center align-center m-b-10">
+            <div
+              (click)="setActive('instagram')"
+              class="social-image d-flex justify-center align-center m-b-10"
+            >
               <img src="/assets/svg/instagram-share.svg" alt="" />
             </div>
             <span>Instagram</span>
           </div>
-          <div class="social d-flex flex-d-col justify-center align-center">
-            <div class="social-image d-flex justify-center align-center m-b-10">
+          <div
+            [class.active-social]="activeButton === 'tiktok'"
+            class="social d-flex flex-d-col justify-center align-center"
+          >
+            <div
+              (click)="setActive('tiktok')"
+              class="social-image d-flex justify-center align-center m-b-10"
+            >
               <img src="/assets/svg/tiktok-share.svg" alt="" />
             </div>
             <span>TikTok</span>
           </div>
-          <div class="social d-flex flex-d-col justify-center align-center">
-            <div class="social-image d-flex justify-center align-center m-b-10">
+          <div
+            [class.active-social]="activeButton === 'fasebook'"
+            class="social d-flex flex-d-col justify-center align-center"
+          >
+            <div
+              (click)="setActive('fasebook')"
+              class="social-image d-flex justify-center align-center m-b-10"
+            >
               <img src="/assets/svg/facebook-share.svg" alt="" />
             </div>
             <span>Facebook</span>
           </div>
-          <div class="social d-flex flex-d-col justify-center align-center">
-            <div class="social-image d-flex justify-center align-center m-b-10">
+          <div
+            [class.active-social]="activeButton === 'youtube'"
+            class="social d-flex flex-d-col justify-center align-center"
+          >
+            <div
+              (click)="setActive('youtube')"
+              class="social-image d-flex justify-center align-center m-b-10"
+            >
               <img src="/assets/svg/youtube-share.svg" alt="" />
             </div>
             <span>YouTube</span>
           </div>
-          <div class="social d-flex flex-d-col justify-center align-center">
-            <div class="social-image d-flex justify-center align-center m-b-10">
+          <div
+            [class.active-social]="activeButton === 'more'"
+            class="social d-flex flex-d-col justify-center align-center"
+          >
+            <div
+              (click)="setActive('more')"
+              class="social-image d-flex justify-center align-center m-b-10"
+            >
               <img src="/assets/svg/more-share.svg" alt="" />
             </div>
             <span>More</span>
@@ -92,18 +120,26 @@
         <span class="link m-b-10">Or share with link</span>
         <div class="input m-b-20 d-flex align-center">
           <input
-            class="p-l-10"
+            #inputElement
+            class="input-link p-l-10"
             placeholder="https://www.yourlink.com/NlfVhYygR9mAQ..."
             type="text"
           />
-          <img class="p-r-10" src="/assets/svg/link-modal.svg" alt="" />
+          <img
+            (click)="copyLink()"
+            class="p-r-10"
+            src="/assets/svg/link-modal.svg"
+            alt=""
+          />
         </div>
       </div>
     </div>
   </ng-container>
   <ng-container *ngSwitchCase="isOpen && 'subscribe'">
     <div class="modal-content small-content successfull-modal">
-      <div class="title d-flex justify-end p-lr-15 d-flex justify-space-between align-center">
+      <div
+        class="title d-flex justify-end p-lr-15 d-flex justify-space-between align-center"
+      >
         <img (click)="closeModal()" src="/assets/svg/close-modal.svg" alt="" />
       </div>
 
