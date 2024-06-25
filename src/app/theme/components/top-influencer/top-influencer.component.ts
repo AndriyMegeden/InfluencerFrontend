@@ -14,11 +14,30 @@ export class TopInfluencerComponent {
     slidesToScroll: 1,
     dots: false,
     infinite: true,
-    autoplay: false,
-    autoplaySpeed: 3000,
+    autoplay: true,
+    autoplaySpeed: 2000,
     showArrow: false,
+    responsive: [
+      {
+        breakpoint: 1190,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
-
   slickInit(event: any) {
     console.log('slick initialized');
   }
