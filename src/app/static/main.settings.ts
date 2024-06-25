@@ -259,7 +259,7 @@ export const homeBannerConfig: HomeBannerConfig[] = [
     headline: 'Wireframer Influencer Platform',
     title: 'Where Influencers and Brands Connect Directly for Authentic Campaigns”',
     subtitle: 'Welcome to Platform Name, where brands connect directly with influencers, hassle-free.',
-    bannerUrl: '/assets/png/background.png',
+    bannerUrl: '/assets/png/slider2.png',
     button: 'Start Now'
   }
 ]
