@@ -225,7 +225,8 @@ export const brands: Array<string> = [
 
 export const marketingConfig: MarketingConfig = {
   title: 'Technology Driven Influencer Marketing Agency in India',
-  subtitle: 'Fully customizable and neatly organized components will help you work faster without limiting creative freedom.',
+  subtitle:
+    'Fully customizable and neatly organized components will help you work faster without limiting creative freedom.',
   items: [
     {
       title: 'Influencers',
@@ -246,83 +247,71 @@ export const marketingConfig: MarketingConfig = {
   ],
 };
 
-
 export const homeBannerConfig: HomeBannerConfig[] = [
   {
     headline: 'Wireframer Influencer Platform',
-    title: 'Where Influencers and Brands Connect Directly for Authentic Campaigns”',
-    subtitle: 'Welcome to Platform Name, where brands connect directly with influencers, hassle-free.',
+    title:
+      'Where Influencers and Brands Connect Directly for Authentic Campaigns”',
+    subtitle:
+      'Welcome to Platform Name, where brands connect directly with influencers, hassle-free.',
     bannerUrl: '/assets/png/background.png',
-    button: 'Start Now'
+    button: 'Start Now',
   },
   {
     headline: 'Wireframer Influencer Platform',
-    title: 'Where Influencers and Brands Connect Directly for Authentic Campaigns”',
-    subtitle: 'Welcome to Platform Name, where brands connect directly with influencers, hassle-free.',
+    title:
+      'Where Influencers and Brands Connect Directly for Authentic Campaigns”',
+    subtitle:
+      'Welcome to Platform Name, where brands connect directly with influencers, hassle-free.',
     bannerUrl: '/assets/png/slider2.png',
-    button: 'Start Now'
-  }
-]
+    button: 'Start Now',
+  },
+];
 
 export const topInfluencer: TopInfluencerConfig = {
-    title: 'Top Influencer',
-    items: [
-      {
-        button: 'Contact Now',
-        style: 'Fashion',
-        active: true,
-        name: 'Isa Khan',
-        image: '/assets/png/card-influencer.png'
-      },
-      {
-        button: 'Contact Now',
-        style: 'Fashion',
-        active: true,
-        name: 'Isa Khan',
-        image: '/assets/png/card-influencer.png'
-      },
-      {
-        button: 'Contact Now',
-        style: 'Fashion',
-        active: true,
-        name: 'Isa Khan',
-        image: '/assets/png/card-influencer.png'
-      },
-      {
-        button: 'Contact Now',
-        style: 'Fashion',
-        active: true,
-        name: 'Isa Khan',
-        image: '/assets/png/card-influencer.png'
-      },
-      {
-        button: 'Contact Now',
-        style: 'Fashion',
-        active: true,
-        name: 'Isa Khan',
-        image: '/assets/png/card-influencer.png'
-      },
-      {
-        button: 'Contact Now',
-        style: 'Fashion',
-        active: true,
-        name: 'Isa Khan',
-        image: '/assets/png/card-influencer.png'
-      },
-      {
-        button: 'Contact Now',
-        style: 'Fashion',
-        active: true,
-        name: 'Isa Khan',
-        image: '/assets/png/card-influencer.png'
-      },
-      {
-        button: 'Contact Now',
-        style: 'Fashion',
-        active: true,
-        name: 'Isa Khan',
-        image: '/assets/png/card-influencer.png'
-      }
-    ]
-    
-}
+  title: 'Top Influencer',
+  items: [
+    {
+      button: 'Contact Now',
+      style: 'Relax',
+      active: true,
+      name: 'Isa Khan',
+      image: '/assets/png/card-influencer.png',
+    },
+    {
+      button: 'Contact Now',
+      style: 'Fashion',
+      active: true,
+      name: 'Angel Fox',
+      image: '/assets/png/shape2.png',
+    },
+    {
+      button: 'Contact Now',
+      style: 'Fashion',
+      active: true,
+      name: 'Jo Bernard',
+      image: '/assets/png/card-active.png',
+    },
+    {
+      button: 'Contact Now',
+      style: 'Fashion',
+      active: true,
+      name: 'Elisabhet Swam',
+      image: '/assets/png/shape3.png',
+    },
+    {
+      button: 'Contact Now',
+      style: 'Style',
+      active: true,
+      name: 'Marisha Sairus',
+      image: '/assets/png/shape4.png',
+    },
+    {
+      button: 'Contact Now',
+      style: 'Sport',
+      active: true,
+      name: 'Dnthony Joshua',
+      image: '/assets/png/shape5.png',
+    },
+  ],
+};

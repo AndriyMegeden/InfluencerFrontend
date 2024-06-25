@@ -4,24 +4,22 @@ import { TopInfluencerConfig } from '@interfaces/main.interface';
 @Component({
   selector: 'app-top-influencer',
   templateUrl: './top-influencer.component.html',
-  styleUrl: './top-influencer.component.scss'
+  styleUrl: './top-influencer.component.scss',
 })
 export class TopInfluencerComponent {
-
   @Input() config!: TopInfluencerConfig;
 
   public slideConfig = {
-    slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToShow: 4,
+    slidesToScroll: 1,
     dots: false,
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 3000,
-    showArrow: false
+    showArrow: false,
   };
 
   slickInit(event: any) {
     console.log('slick initialized');
   }
-
 }
