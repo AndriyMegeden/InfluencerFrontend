@@ -1,0 +1,13 @@
+{
+    "builds": [
+      {
+        "src": "dist/influencer-frontend/**",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      { "handle": "filesystem" },
+      { "src": "/.*", "dest": "/index.html" }
+    ]
+  }
+  
