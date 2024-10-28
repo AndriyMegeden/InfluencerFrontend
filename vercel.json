@@ -1,6 +1,13 @@
 {
-  "rewrites": [
-      {"source": "/(.*)", "destination": "/"}
-  ]
+  "builds": [
+    {
+      "src": "dist/influencer-frontend/browser/en/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "dist/influencer-frontend/browser/en/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "/en/index.html" }]
 }
-

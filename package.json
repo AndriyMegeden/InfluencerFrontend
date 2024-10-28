@@ -2,6 +2,9 @@
   "name": "influencer-frontend",
   "version": "0.0.0",
   "scripts": {
+    "start": "ng serve",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
     "build": "ng build",
     "ng": "ng",
     "start:dev": "ng serve --configuration development",
