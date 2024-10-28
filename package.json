@@ -2,6 +2,7 @@
   "name": "influencer-frontend",
   "version": "0.0.0",
   "scripts": {
+    "build": "ng build",
     "ng": "ng",
     "start:dev": "ng serve --configuration development",
     "start:dev:ssr": "npm run build:dev && node dist/influencer-frontend/server/en/server.mjs",
