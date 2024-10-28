@@ -1,16 +1,6 @@
 {
-  "builds": [
-    {
-      "src": "dist/influencer-frontend/browser/en",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "dist/influencer-frontend/server/en",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/en/index.html" }
+  "rewrites": [
+      {"source": "/(.*)", "destination": "/"}
   ]
 }
+
