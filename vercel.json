@@ -1,11 +1,11 @@
 {
   "builds": [
     {
-      "src": "dist/influencer-frontend/browser/en/index.html",
+      "src": "dist/influencer-frontend/browser/en",
       "use": "@vercel/static"
     },
     {
-      "src": "dist/influencer-frontend/server/en/index.server.html",
+      "src": "dist/influencer-frontend/server/en",
       "use": "@vercel/static"
     }
   ],
