@@ -7,17 +7,17 @@
       },
       {
         "src": "dist/influencer-frontend/server/en",
-        "use": "@vercel/static"
+        "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "dist/influencer-frontend/browser/en"
+        "dest": "dist/influencer-frontend/browser/en/$1"
       },
       {
-        "src": "/(.*)",
-        "dest": "dist/influencer-frontend/server/en"
+        "src": "/api/(.*)",
+        "dest": "dist/influencer-frontend/server/en/$1"
       }
     ]
   }
