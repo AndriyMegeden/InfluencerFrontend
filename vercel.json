@@ -1,0 +1,24 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "dist/influencer-frontend/browser/en",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "dist/influencer-frontend/server/en",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "dist/influencer-frontend/browser/en"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "dist/influencer-frontend/server/en"
+      }
+    ]
+  }
+  
