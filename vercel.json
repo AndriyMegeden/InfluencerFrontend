@@ -1,13 +1,9 @@
 {
   "builds": [
     {
-      "src": "dist/influencer-frontend/browser/en/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "dist/influencer-frontend/browser/en/**",
+      "src": "dist/influencer-frontend/",
       "use": "@vercel/static"
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "/en/index.html" }]
+  "routes": [{ "src": "/(.*)", "dest": "/" }]
 }
