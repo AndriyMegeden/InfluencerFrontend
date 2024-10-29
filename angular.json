@@ -91,7 +91,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "buildTarget": "influencer-frontend:build",
-            "outputPath": "src/locale",
+            "outputPath": "dist/influencer-frontend",
             "format": "json",
             "outFile": "en"
           }
