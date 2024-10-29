@@ -18,7 +18,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "localize": true,
-            "outputPath": "dist/influencer-frontend",
+            "outputPath": "dist/influencer-frontend/browser/en",
             "baseHref": "/InfluencerFrontend/",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -92,7 +92,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "buildTarget": "influencer-frontend:build",
-            "outputPath": "dist/influencer-frontend",
+            "outputPath": "dist/influencer-frontend/browser/en",
             "format": "json",
             "outFile": "en"
           }
