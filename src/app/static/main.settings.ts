@@ -233,7 +233,7 @@ export const marketingConfig: MarketingConfig = {
       subtitle:
         'Lorem Ipsum Is Simply Dummy Text Of The Printing And Industry.',
       button: 'Sign up',
-      image: '//en/assets/png/card-marketing.png',
+      image: '/assets/png/card-marketing.png',
       active: true,
     },
     {
@@ -241,7 +241,7 @@ export const marketingConfig: MarketingConfig = {
       subtitle:
         'Lorem Ipsum Is Simply Dummy Text Of The Printing And Industry.',
       button: 'Sign up',
-      image: '//en/assets/png/card-marketing2.png',
+      image: '/assets/png/card-marketing2.png',
       active: false,
     },
   ],
@@ -254,7 +254,7 @@ export const homeBannerConfig: HomeBannerConfig[] = [
       'Where Influencers and Brands Connect Directly for Authentic Campaigns”',
     subtitle:
       'Welcome to Platform Name, where brands connect directly with influencers, hassle-free.',
-    bannerUrl: '//en/assets/png/background.png',
+    bannerUrl: '/assets/png/background.png',
     button: 'Start Now',
   },
   {
@@ -263,7 +263,7 @@ export const homeBannerConfig: HomeBannerConfig[] = [
       'Where Influencers and Brands Connect Directly for Authentic Campaigns”',
     subtitle:
       'Welcome to Platform Name, where brands connect directly with influencers, hassle-free.',
-    bannerUrl: '//en/assets/png/slider2.png',
+    bannerUrl: '/assets/png/slider2.png',
     button: 'Start Now',
   },
 ];
@@ -276,42 +276,42 @@ export const topInfluencer: TopInfluencerConfig = {
       style: 'Relax',
       active: true,
       name: 'Isa Khan',
-      image: '//en/assets/png/card-influencer.png',
+      image: '/assets/png/card-influencer.png',
     },
     {
       button: 'Contact Now',
       style: 'Fashion',
       active: true,
       name: 'Angel Fox',
-      image: '//en/assets/png/shape2.png',
+      image: '/assets/png/shape2.png',
     },
     {
       button: 'Contact Now',
       style: 'Fashion',
       active: true,
       name: 'Jo Bernard',
-      image: '//en/assets/png/card-active.png',
+      image: '/assets/png/card-active.png',
     },
     {
       button: 'Contact Now',
       style: 'Fashion',
       active: true,
       name: 'Elisabhet Swam',
-      image: '//en/assets/png/shape3.png',
+      image: '/assets/png/shape3.png',
     },
     {
       button: 'Contact Now',
       style: 'Style',
       active: true,
       name: 'Marisha Sairus',
-      image: '//en/assets/png/shape4.png',
+      image: '/assets/png/shape4.png',
     },
     {
       button: 'Contact Now',
       style: 'Sport',
       active: true,
       name: 'Dnthony Joshua',
-      image: '//en/assets/png/shape5.png',
+      image: '/assets/png/shape5.png',
     },
   ],
 };
