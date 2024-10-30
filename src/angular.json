@@ -110,7 +110,7 @@
             "assets": [
               "src/favicon.ico",
               "src/png/",
-              "src/png/"
+              "src/svg/"
             ],
             "styles": [
               "src/styles.scss"
