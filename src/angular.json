@@ -29,8 +29,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets/png/**",
-              "src/assets/svg/**"
+              "src/png/",
+              "src/svg/"
             ],
             "styles": [
               "node_modules/slick-carousel/slick/slick.scss",
@@ -109,8 +109,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets/png/**",
-              "src/assets/svg/**"
+              "src/png/",
+              "src/png/"
             ],
             "styles": [
               "src/styles.scss"
