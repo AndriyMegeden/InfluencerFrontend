@@ -1,38 +1,39 @@
+
 {
-  "redirects": [
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "header",
-          "key": "Accept-Language",
-          "value": "^en.*$"
-        }
-      ],
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "header",
-          "key": "Accept-Language",
-          "value": "^(?!^en).*"
-        }
-      ],
-      "destination": "/",
-      "permanent": false
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/:path*",
-      "destination": "/en/index.html"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/index.html"
-    }
-  ]
-}
+    "redirects": [
+      {
+        "source": "/",
+        "has": [
+          {
+            "type": "header",
+            "key": "Accept-Language",
+            "value": "^en.*$"
+          }
+        ],
+        "destination": "/en",
+        "permanent": false
+      },
+      {
+        "source": "/",
+        "has": [
+          {
+            "type": "header",
+            "key": "Accept-Language",
+            "value": "^(?!^en).*"
+          }
+        ],
+        "destination": "/en",
+        "permanent": false
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/en/:path*",
+        "destination": "/en/index.html"
+      },
+      {
+        "source": "/en/:path*",
+        "destination": "/en/index.html"
+      }
+    ]
+  }
