@@ -37,6 +37,10 @@
       {
         "source": "/assets/png/:path*",
         "destination": "/en/assets/png/:path*"
+      },
+      {
+        "source": "/assets/:path*",
+        "destination": "/en/assets/:path*"
       }
     ]
   }
