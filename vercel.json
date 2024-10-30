@@ -35,11 +35,7 @@
         "destination": "/en/assets/svg/:path*"
       },
       {
-        "source": "/assets/png/:path*",
-        "destination": "/en/assets/png/:path*"
-      },
-      {
-        "source": "/assets/png/:path*",
+        "source": "//en/assets/png/:path*",
         "destination": "/assets/png/:path*"
       },
       {
