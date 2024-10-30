@@ -29,8 +29,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets/png",
-              "src/assets/svg"
+              "src/assets"
             ],
             "styles": [
               "node_modules/slick-carousel/slick/slick.scss",
@@ -108,9 +107,8 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets/png",
-              "src/assets/svg"
+               "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
