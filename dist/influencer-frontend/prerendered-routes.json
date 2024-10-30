@@ -1,0 +1,15 @@
+{
+  "routes": [
+    "/en/auth",
+    "/en/auth-step",
+    "/en/auth-step/register-brand",
+    "/en/auth-step/register-influencer",
+    "/en/auth/forgot-password",
+    "/en/auth/login",
+    "/en/auth/register",
+    "/en/main",
+    "/en/main/home",
+    "/en/main/listing",
+    "/en/main/profile"
+  ]
+}
