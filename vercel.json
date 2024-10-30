@@ -1,47 +1,45 @@
 {
-    "redirects": [
-      {
-        "source": "/",
-        "has": [
-          {
-            "type": "header",
-            "key": "Accept-Language",
-            "value": "^en.*$"
-          }
-        ],
-        "destination": "/en",
-        "permanent": false
-      },
-      {
-        "source": "/",
-        "has": [
-          {
-            "type": "header",
-            "key": "Accept-Language",
-            "value": "^(?!^en).*"
-          }
-        ],
-        "destination": "/en",
-        "permanent": false
-      }
-    ],
-    "rewrites": [
-      {
-        "source": "/en/:path*",
-        "destination": "/en/index.html"
-      },
-      {
-        "source": "/assets/svg/:path*",
-        "destination": "/en/assets/svg/:path*"
-      },
-      {
-        "source": "/assets/png/:path*",
-        "destination": "/en/assets/png/:path*"
-      },
-      {
-        "source": "/assets/:path*",
-        "destination": "/en/assets/:path*"
-      }
-    ]
-  }
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "Accept-Language",
+          "value": "^en.*$"
+        }
+      ],
+      "destination": "/en",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "Accept-Language",
+          "value": "^(?!^en).*"
+        }
+      ],
+      "destination": "/en",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/en/:path*",
+      "destination": "/en/index.html"
+    },
+    {
+      "source": "/assets/svg/:path*",
+      "destination": "/en/assets/svg/:path*"
+    },
+    
+    {
+      "source": "/assets/:path*",
+      "destination": "/en/assets/:path*"
+    }
+  ]
+}
+
   
