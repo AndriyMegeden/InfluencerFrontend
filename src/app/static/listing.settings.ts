@@ -12,7 +12,7 @@ export const CardSettings: Card[] = [
     youTube: '384k',
     city: 'Delhi',
     country: 'India',
-    img: '/assets/png/card-filter.png',
+    img: '//en/assets/png/card-filter.png',
   },
   {
     percent: 2.5,
@@ -25,7 +25,7 @@ export const CardSettings: Card[] = [
     youTube: '500k',
     city: 'New York',
     country: 'USA',
-    img: '/assets/png/test-filter.png',
+    img: '//en/assets/png/test-filter.png',
   },
   {
     percent: 2.5,
@@ -38,7 +38,7 @@ export const CardSettings: Card[] = [
     youTube: '500k',
     city: 'New York',
     country: 'USA',
-    img: '/assets/png/test-filter.png',
+    img: '//en/assets/png/test-filter.png',
   },
   {
     percent: 2.5,
@@ -51,7 +51,7 @@ export const CardSettings: Card[] = [
     youTube: '500k',
     city: 'New York',
     country: 'USA',
-    img: '/assets/png/test-filter.png',
+    img: '//en/assets/png/test-filter.png',
   },
   {
     percent: 3.03,
@@ -64,6 +64,6 @@ export const CardSettings: Card[] = [
     youTube: '384k',
     city: 'Delhi',
     country: 'India',
-    img: '/assets/png/card-filter.png',
+    img: '//en/assets/png/card-filter.png',
   },
 ];

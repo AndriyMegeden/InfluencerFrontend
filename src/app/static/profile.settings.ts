@@ -10,22 +10,22 @@ export const PostSettings: Post[] = [
   {
     like: '35.6 k',
     comment: '788',
-    img: '/assets/png/post-profile.png',
+    img: '//en/assets/png/post-profile.png',
   },
   {
     like: '35.6 k',
     comment: '788',
-    img: '/assets/png/avatar.png',
+    img: '//en/assets/png/avatar.png',
   },
   {
     like: '35.6 k',
     comment: '788',
-    img: '/assets/png/post-profile.png',
+    img: '//en/assets/png/post-profile.png',
   },
   {
     like: '35.6 k',
     comment: '788',
-    img: '/assets/png/avatar.png',
+    img: '//en/assets/png/avatar.png',
   },
 ];
 

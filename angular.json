@@ -22,20 +22,21 @@
             "baseHref": "/",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "assets",
-                "output": "assets"
-              }
+              "src/favicon.ico",
+              "src/assets/png",
+              "src/assets/svg"
             ],
             "styles": [
               "node_modules/slick-carousel/slick/slick.scss",
               "node_modules/slick-carousel/slick/slick-theme.scss",
               "src/styles.scss"
+            
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -69,7 +70,9 @@
               "sourceMap": true
             },
             "en": {
-              "localize": ["en"]
+              "localize": [
+                "en"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -98,17 +101,20 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "assets",
-                "output": "assets"
-              }
+              "src/favicon.ico",
+              "src/assets/png",
+              "src/assets/svg"
             ],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -144,7 +150,9 @@
   },
   "cli": {
     "analytics": false,
-    "schematicCollections": ["@ionic/angular-toolkit"]
+    "schematicCollections": [
+      "@ionic/angular-toolkit"
+    ]
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

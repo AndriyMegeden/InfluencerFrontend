@@ -32,8 +32,24 @@
         "destination": "/en/index.html"
       },
       {
-        "source": "/en/:path*",
-        "destination": "/en/index.html"
+        "source": "/en/assets/png/:path*",
+        "destination": "en/assets/png/:path*"
+      },
+      {
+        "source": "/en/assets/svg/:path*",
+        "destination": "/en/assets/svg/:path*"
+      },
+      {
+        "source": "/assets/png/:path*",
+        "destination": "/en/assets/png/:path*"
+      },
+      {
+        "source": "/assets/svg/:path*",
+        "destination": "/en/assets/svg/:path*"
       }
     ]
   }
+  
+
+
+

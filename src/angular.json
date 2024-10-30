@@ -28,11 +28,9 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "assets",
-                "output": "assets"
-              }
+              "src/favicon.ico",
+              "src/assets/png",
+              "src/assets/svg"
             ],
             "styles": [
               "node_modules/slick-carousel/slick/slick.scss",
@@ -110,11 +108,9 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "assets",
-                "output": "assets"
-              }
+              "src/favicon.ico",
+              "src/assets/png",
+              "src/assets/svg"
             ],
             "styles": [
               "src/styles.scss"
