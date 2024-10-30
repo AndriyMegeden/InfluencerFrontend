@@ -21,7 +21,7 @@
             "value": "^(?!^en).*"
           }
         ],
-        "destination": "/es",
+        "destination": "/en",
         "permanent": false
       }
     ],
@@ -36,4 +36,6 @@
       }
     ]
   }
+  
+
   
