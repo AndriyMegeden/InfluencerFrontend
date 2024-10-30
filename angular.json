@@ -19,7 +19,7 @@
           "options": {
             "localize": true,
             "outputPath": "dist/influencer-frontend",
-            "baseHref": "/InfluencerFrontend/",
+            "baseHref": "/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -80,10 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "influencer-frontend:build:production,en"
+              "buildTarget": "influencer-frontend:build:production"
             },
             "development": {
-              "buildTarget": "influencer-frontend:build:development,en"
+              "buildTarget": "influencer-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,8 +1,39 @@
 {
+    "redirects": [
+      {
+        "source": "/",
+        "has": [
+          {
+            "type": "header",
+            "key": "Accept-Language",
+            "value": "^en.*$"
+          }
+        ],
+        "destination": "/en",
+        "permanent": false
+      },
+      {
+        "source": "/",
+        "has": [
+          {
+            "type": "header",
+            "key": "Accept-Language",
+            "value": "^(?!^en).*"
+          }
+        ],
+        "destination": "/es",
+        "permanent": false
+      }
+    ],
     "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
+      {
+        "source": "/en/:path*",
+        "destination": "/en/index.html"
+      },
+      {
+        "source": "/es/:path*",
+        "destination": "/es/index.html"
+      }
     ]
   }
   
-  
-
