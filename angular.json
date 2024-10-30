@@ -19,7 +19,7 @@
           "options": {
             "localize": true,
             "outputPath": "dist/influencer-frontend",
-            "baseHref": "/",
+            "baseHref": "/dist/influencer-frontend/browser/en/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
