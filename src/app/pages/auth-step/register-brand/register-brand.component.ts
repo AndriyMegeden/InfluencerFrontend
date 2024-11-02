@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SharedThemeModule } from '@theme/shared.theme.module';
 import { DirectivesModule } from 'src/app/directives/directives.module';
 
@@ -13,6 +14,11 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
 })
 export class RegisterBrandComponent {
 
+  constructor(
+    protected router: Router,
+   
+  ) {}
+
   public form: FormGroup = new FormGroup({
     businessName: new FormControl('', [Validators.required, Validators.minLength(3)]),
     businessWebsite: new FormControl('', [Validators.minLength(3)]),
@@ -22,5 +28,7 @@ export class RegisterBrandComponent {
 
   getForm(){
     console.log('getUserData - Role: brand', this.form.value);
+    this.router.navigate(['/main/listing']);
+
   }
 }

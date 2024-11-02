@@ -14,10 +14,10 @@
         </div>
         <ul class="d-flex flex-d-row align-center">
           <li>
-            <button><span>Item One</span></button>
+            <button routerLink="/main/listing"><span>Listing</span></button>
           </li>
           <li class="m-lr-40">
-            <button><span>Item Two</span></button>
+            <button routerLink="/main/home"><span>Home</span></button>
           </li>
           <li>
             <button><span>Item Three</span></button>
@@ -49,6 +49,7 @@
 
         <!-- частина коли авторизувався -->
         <div
+        routerLink="/main/profile"
           *ngIf="immitationService.isAuth$ | async; else infoBlock"
           class="registered d-flex align-center"
         >

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthStep } from '@interfaces/auth.interface';
 import { checkBoxesStepOne, checkBoxesStepTwo } from '@static/auth.settings';
 import { SharedThemeModule } from '@theme/shared.theme.module';
@@ -24,6 +25,13 @@ export class RegisterInfluencerComponent implements OnInit {
   public formCompleted?: FormGroup;
   public formSocialInputs?: FormGroup;
 
+
+  constructor(
+    protected router: Router,
+   
+  ) {}
+
+
   ngOnInit() {
     this.checkBoxes = this.checkBoxesStepOne;
     this.createFormCompleted()
@@ -33,7 +41,7 @@ export class RegisterInfluencerComponent implements OnInit {
   createFormPart(currentStep: AuthStep, minLength: number){
     delete this.formPart;
     this.formPart = new FormGroup({
-      [currentStep]: new FormControl([], [Validators.required, Validators.minLength(minLength)]),
+      [currentStep]: new FormControl([], [Validators.required,  Validators.minLength(3)]),
     })
     this.formPart.get(currentStep)?.setValue(this.formCompleted?.get(currentStep)?.value)
   }
@@ -103,5 +111,6 @@ export class RegisterInfluencerComponent implements OnInit {
 
   getForm(value: any){
     console.log('getUserData - Role: influencer', value);
+    this.router.navigate(['/main/listing']);
   }
 }

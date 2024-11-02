@@ -39,6 +39,7 @@ export class AuthComponent {
   public socials: Array<{ id: SocialType; text: string }> = socials;
   public resetKeys: Array<String> | any = resetKeys;
 
+  
   register() {
     console.log('go');
     this.userService.register(this.form.value).subscribe(
@@ -154,11 +155,18 @@ export class AuthComponent {
   getForm() {}
 
   submitForm(buttonId: string) {
+    
+    const selectedRole = this.form.get('userRoles')?.value;
+
     this.getForm();
     if (buttonId === 'signUp') {
+      // Логіка реєстрації (можливо, виклик сервісу)
       this.immitationService.login();
-      this.router.navigate(['/main/listing']);
-      // this.userService.setSubmitted(true);
+      if (selectedRole === 'brand') {
+        this.router.navigate(['/auth-step/register-brand']); // Перехід на сторінку для бренду
+      } else if (selectedRole === 'influencer') {
+        this.router.navigate(['/auth-step/register-influencer']); // Перехід на сторінку для інфлюенсера
+      }
     }
     if (buttonId === 'signIn') {
       this.immitationService.login();
