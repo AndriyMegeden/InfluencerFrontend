@@ -40,19 +40,7 @@
           </ng-container>
           <ng-container *ngSwitchCase="'tel'">
             <div class="input m-b-20 align-center d-flex w-100">
-              <div class="dropdown m-l-10 m-r-10">
-                <select
-                  formControlName="dropdownValue"
-                  class="form-control p-r-20 p-l-0"
-                >
-                  <option
-                    *ngFor="let option of dropdownOptions"
-                    [value]="option"
-                  >
-                    {{ option }}
-                  </option>
-                </select>
-              </div>
+              <img class="m-lr-10" [src]="input.icon" [alt]="input.inputId" />
               <input
                 class="m-b-10"
                 [formControlName]="input.inputId"

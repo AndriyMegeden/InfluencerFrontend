@@ -84,7 +84,6 @@ export class AuthComponent {
     protected immitationService: ImmitationService
   ) {}
 
-  dropdownOptions: string[] = ['+380', '+91', '+767'];
 
   createForm() {
     const formControlsConfig: Record<string, any> = {};
@@ -109,12 +108,7 @@ export class AuthComponent {
       });
     }
 
-    if (this.dropdownOptions.length > 0) {
-      formControlsConfig['dropdownValue'] = new FormControl(
-        this.dropdownOptions[1],
-        [Validators.required]
-      );
-    }
+    
 
     this.form = new FormGroup(formControlsConfig);
   }

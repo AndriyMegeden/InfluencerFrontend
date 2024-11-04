@@ -1,10 +1,12 @@
 .absolute-container {
-  background-color: var(--light-background);
+  background-color: var(--white);
   .container {
     padding: 0;
     height: 100vh;
     .content {
-      height: 100%;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      // height: 100%;
       .step-container {
         .achievement {
           .circle {
@@ -55,6 +57,7 @@
   .absolute-container {
     .container {
       .content {
+        padding: 0px;
         height: 100%;
         .step-container {
           width: 80%;
