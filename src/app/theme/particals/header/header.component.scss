@@ -12,7 +12,6 @@
     background: var(--filter);
   }
   .container {
-
     max-width: 1140px;
     .header {
       width: 100%;
@@ -290,6 +289,20 @@
             .input {
               width: 100%;
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .absolute-container {
+    .container {
+      .header {
+        .menu {
+          .logo {
+            display: none;
           }
         }
       }

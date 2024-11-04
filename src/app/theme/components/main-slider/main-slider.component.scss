@@ -4,7 +4,6 @@
   height: 870px;
   background-position: top;
   background-size: cover;
-  background-size: contain;
   cursor: pointer;
   .container {
     .text {
@@ -110,12 +109,15 @@
 
     .container {
       .text {
-        width: 260px;
+    padding: 0;
+        height: 100%;
+        width: 80%;
         .above-title {
           font-size: 13px;
         }
         .title {
-          font-size: 16px;
+         display: none;
+
         }
         .subtitle {
           width: 100%;
