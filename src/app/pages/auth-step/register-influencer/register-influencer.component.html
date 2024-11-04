@@ -68,7 +68,7 @@
         <button
           class="general"
           (click)="next()"
-          [disabled]="formPart?.invalid"
+          [disabled]="formPart?.invalid || formSocialInputs?.invalid"
         >
           NEX STEP
         </button>

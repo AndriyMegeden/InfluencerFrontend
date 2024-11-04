@@ -75,7 +75,7 @@ export class RegisterInfluencerComponent implements OnInit {
           currentValue.splice(index, 1);
         } else {
           if(this.currentStep === 'two' && this.formSocialInputs){
-            this.formSocialInputs.setControl(`${id}Link`, new FormControl('', [Validators.required, Validators.minLength(3)]))
+            this.formSocialInputs.setControl(`${id}Link`, new FormControl([Validators.required, Validators.minLength(3)]))
           }
           currentValue.push(id);
         }
