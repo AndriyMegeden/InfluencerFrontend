@@ -168,11 +168,10 @@ export class AuthComponent {
       this.router.navigate(['/main/listing']);
       // this.userService.setSubmitted(true);
     }
-  }
-
-  getForm10() {
     this.startTimer();
   }
+
+
 
   socialLogin(id: string) {}
 }

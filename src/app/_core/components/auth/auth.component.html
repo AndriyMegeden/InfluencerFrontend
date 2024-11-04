@@ -129,18 +129,9 @@
           [disabled]="form.invalid || submitted"
           type="submit"
           (click)="submitForm(button.id)"
-       
         >
-          {{ button.text }}
-        </button>
-
-        <button
-          *ngIf="currentMode.sections && currentMode.sections.includes('back')"
-          class="general sign-in d-flex m-b-20 justify-center align-center"
-          [disabled]="form.invalid"
-          (click)="getForm10()"
-        >
-          {{ timeLeft > 0 ? " (" + timeLeft + ")" : "" }}
+          {{ button.text }} 
+           <span class="p-l-6 time" *ngIf="button.id === 'verify0' && timeLeft > 0"> ({{ timeLeft }})</span>
         </button>
       </ng-container>
     </ng-container>

@@ -248,7 +248,7 @@ export const forgotSettingStepOne: AuthSettings = {
   ],
   buttons: [
     {
-      id: 'verify',
+      id: 'verify0',
       text: 'Send code',
     },
   ],
