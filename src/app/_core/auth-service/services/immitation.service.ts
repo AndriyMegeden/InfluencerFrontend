@@ -26,12 +26,15 @@ export class ImmitationService {
     this.cookieService.set('isAuthenticated', 'true');
     console.log('пішов логін');
   }
-
   logout() {
     this.isAuthSubject.next(false);
-    this.cookieService.delete('isAuthenticated');
-    console.log('вийшов');
+    // Очищаємо cookie
+    this.cookieService.delete('isAuthenticated', '/');
+    // Встановлюємо cookie з порожнім значенням
+    this.cookieService.set('isAuthenticated', 'false', 0); // Термін дії cookie - 0
+    console.log('Користувач вийшов');
   }
+  
   //Повертає обіцянку (Promise) для отримання стану аутентифікації.
   //Результат обіцянки - це поточне значення isAuthSubject, що представляє поточний стан аутентифікації.
   isUserLogin(): Promise<boolean> {

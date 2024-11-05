@@ -176,6 +176,30 @@
         }
       }
     }
+    .logout-menu {
+      margin-right: 50px;
+      top: -10px;
+      position: absolute;
+      z-index: 1500;
+      background-color: var(--light-pink);
+      width: 184px;
+      height: 160px;
+      border-radius: 10px;
+      .text {
+        span {
+          font-family: "Inter", sans-serif;
+          font-weight: 500;
+          font-size: 14px;
+          color: var(--dark-background);
+          padding-left: 16px;
+          padding-right: 16px;
+          cursor: pointer;
+        }
+        span:hover {
+          color: var(--light-red);
+        }
+      }
+    }
   }
 }
 

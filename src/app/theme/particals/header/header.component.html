@@ -24,8 +24,7 @@
           </li>
         </ul>
       </div>
-      <!-- кнопка виходу з системи -->
-      <!-- <button style="width: 100px;" (click)="logoutt()">logout</button> -->
+     
       <div class="buttons p-r-24 sm-p-r-16 align-center d-flex">
         <div
           class="search m-r-27 lg-m-r-20 input d-flex align-center justify-space-between"
@@ -49,12 +48,13 @@
 
         <!-- частина коли авторизувався -->
         <div
-        routerLink="/main/profile"
+          (click)="logoutMenu()"
           *ngIf="immitationService.isAuth$ | async; else infoBlock"
           class="registered d-flex align-center"
         >
           <span class="name">Hello, </span>
           <span class="surname">Sudarshan</span>
+          <img class="m-l-5" src="/assets/svg/arrow-logout-menu.svg" alt="" />
           <div class="profile-image m-l-16">
             <img src="/assets/png/avatar.png" alt="" />
             <div class="active-point d-flex justify-center align-center">
@@ -126,6 +126,19 @@
           </div>
           <button class="general">Apply Filter</button>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isActiveMenu" class="absolute-container p-absolute z-index-10">
+  <div class="container p-0 d-flex align-end d-flex flex-d-col sm-p-t-16">
+    <div class="logout-menu">
+      <div class="text h-100 d-flex flex-d-col justify-space-arround">
+        <span routerLink="/auth/forgot-password">Change Password</span>
+        <span>Edit Profile</span>
+        <span>Privacy Settings</span>
+         <!-- кнопка виходу з системи -->
+        <span (click)="logoutt()">Log Out</span>
       </div>
     </div>
   </div>

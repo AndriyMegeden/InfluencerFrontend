@@ -9,6 +9,7 @@ import { UserService } from '@core/auth-service/services/user.service';
 })
 export class HeaderComponent {
   public isActive: boolean = false;
+  public isActiveMenu: boolean = false;
   public submitted: boolean = false;
   public num: number = 50;
   citys = ['Paris', 'Milano', 'Krakow'];
@@ -20,6 +21,9 @@ export class HeaderComponent {
 
   toggleFilter() {
     this.isActive = !this.isActive;
+    if(this.isActiveMenu === true){
+      this.isActiveMenu = false
+    }
     const imagePath = this.isActive
       ? '/assets/svg/close-filter.svg'
       : '/assets/svg/search.svg';
@@ -45,5 +49,18 @@ export class HeaderComponent {
 
   logoutt() {
     this.immitationService.logout();
+    this.isActiveMenu = !this.isActiveMenu;
   }
+
+  logoutMenu() {
+    if(this.isActive === true){
+      this.isActive = false
+    }
+    this.isActiveMenu = !this.isActiveMenu;
+    const imagePath = this.isActive
+      ? 'arrow-logout-menu.svg'
+      : '/assets/svg/search.svg';
+    this.iconButton.nativeElement.setAttribute('src', imagePath);
+  }
+
 }
