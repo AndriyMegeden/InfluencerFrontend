@@ -10,6 +10,7 @@ import { UserService } from '@core/auth-service/services/user.service';
 export class HeaderComponent {
   public isActive: boolean = false;
   public isActiveMenu: boolean = false;
+  public Burger: boolean = false;
   public submitted: boolean = false;
   public num: number = 50;
   citys = ['Paris', 'Milano', 'Krakow'];
@@ -61,6 +62,10 @@ export class HeaderComponent {
       ? 'arrow-logout-menu.svg'
       : '/assets/svg/search.svg';
     this.iconButton.nativeElement.setAttribute('src', imagePath);
+  }
+
+  BurgerMenu(){
+    this.Burger = !this.Burger;
   }
 
 }

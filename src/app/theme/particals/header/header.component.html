@@ -4,10 +4,19 @@
   >
     <div class="header d-flex flex-d-row justify-space-between">
       <div class="menu p-l-24 sm-p-l-16 align-center d-flex">
-        <div class="burger-menu m-r-16">
+        <div (click)="BurgerMenu()" class="burger-menu m-r-16">
           <div class="m-b-5"></div>
           <div class="m-b-5"></div>
           <div></div>
+        </div>
+        <div *ngIf="Burger" class="menu-text">
+          <div  class="close d-flex justify-end m-t-20 m-r-20">
+            <img (click)="this.Burger = !this.Burger" src="/assets/svg/close-modal.svg" alt="">
+          </div>
+          <div class="text d-flex flex-d-col justify-space-arround align-center p-20">
+            <span (click)="this.Burger = !this.Burger" routerLink="/main/listing">Listing</span>
+            <span (click)="this.Burger = !this.Burger" routerLink="/main/home">Home</span>
+          </div>
         </div>
         <div class="logo m-r-80 lg-m-r-30 sm-m-r-16">
           <span>Logo</span>
