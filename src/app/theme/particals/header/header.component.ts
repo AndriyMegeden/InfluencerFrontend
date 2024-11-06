@@ -22,8 +22,9 @@ export class HeaderComponent {
 
   toggleFilter() {
     this.isActive = !this.isActive;
-    if(this.isActiveMenu === true){
+    if(this.isActiveMenu === true || this.Burger === true){
       this.isActiveMenu = false
+      this.Burger === false
     }
     const imagePath = this.isActive
       ? '/assets/svg/close-filter.svg'
@@ -54,8 +55,9 @@ export class HeaderComponent {
   }
 
   logoutMenu() {
-    if(this.isActive === true){
+    if(this.isActive === true || this.Burger === true){
       this.isActive = false
+      this.Burger === false
     }
     this.isActiveMenu = !this.isActiveMenu;
     const imagePath = this.isActive
@@ -65,6 +67,11 @@ export class HeaderComponent {
   }
 
   BurgerMenu(){
+    
+    if(this.isActive === true || this.isActiveMenu === true){
+      this.isActive = false
+      this.isActiveMenu === false
+    }
     this.Burger = !this.Burger;
   }
 

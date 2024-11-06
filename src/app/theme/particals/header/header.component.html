@@ -57,14 +57,15 @@
 
         <!-- частина коли авторизувався -->
         <div
-          (click)="logoutMenu()"
           *ngIf="immitationService.isAuth$ | async; else infoBlock"
           class="registered d-flex align-center"
         >
+        <div (click)="logoutMenu()" class="name-button">
           <span class="name">Hello, </span>
           <span class="surname">Sudarshan</span>
           <img class="m-l-5" src="/assets/svg/arrow-logout-menu.svg" alt="" />
-          <div class="profile-image m-l-16">
+        </div>
+          <div routerLink="/main/profile" class="profile-image m-l-16">
             <img src="/assets/png/avatar.png" alt="" />
             <div class="active-point d-flex justify-center align-center">
               <div class="green"></div>
