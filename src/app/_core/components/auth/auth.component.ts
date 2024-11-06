@@ -39,7 +39,6 @@ export class AuthComponent {
   public socials: Array<{ id: SocialType; text: string }> = socials;
   public resetKeys: Array<String> | any = resetKeys;
 
-  
   register() {
     console.log('go');
     this.userService.register(this.form.value).subscribe(
@@ -84,7 +83,6 @@ export class AuthComponent {
     protected immitationService: ImmitationService
   ) {}
 
-
   createForm() {
     const formControlsConfig: Record<string, any> = {};
     this.currentMode.inputs.forEach((input) => {
@@ -108,22 +106,27 @@ export class AuthComponent {
       });
     }
 
-    
-
     this.form = new FormGroup(formControlsConfig);
   }
 
   timeLeft: number = 60;
-
+  interval: any;
   startTimer() {
-    const interval = setInterval(() => {
+    if (this.interval) {
+      clearInterval(this.interval); // Якщо таймер вже працює, зупиняємо його
+    }
+
+    this.interval = setInterval(() => {
       if (this.timeLeft > 0) {
         this.timeLeft--;
       } else {
-        clearInterval(interval);
+        clearInterval(this.interval); // Зупиняємо таймер, коли час досягає 0
+        this.timeLeft = 60; // Скидаємо значення таймера на 60
       }
     }, 1000);
   }
+
+  
 
   checkSection(id: SectionType) {
     if (this.currentMode.sections.includes(id)) {
@@ -149,7 +152,6 @@ export class AuthComponent {
   getForm() {}
 
   submitForm(buttonId: string) {
-    
     const selectedRole = this.form.get('userRoles')?.value;
 
     this.getForm();
@@ -170,8 +172,6 @@ export class AuthComponent {
     }
     this.startTimer();
   }
-
-
 
   socialLogin(id: string) {}
 }

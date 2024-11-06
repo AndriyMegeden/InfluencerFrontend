@@ -38,6 +38,7 @@
               />
             </div>
           </ng-container>
+          <!-- forma -->
           <ng-container *ngSwitchCase="'tel'">
             <div class="input m-b-20 align-center d-flex w-100">
               <img class="m-lr-10" [src]="input.icon" [alt]="input.inputId" />
@@ -121,7 +122,7 @@
         </div>
       </div>
     </ng-container>
-
+  <!-- knopka  -->
     <ng-container *ngIf="currentMode.buttons && currentMode.buttons.length">
       <ng-container *ngFor="let button of currentMode.buttons">
         <button
