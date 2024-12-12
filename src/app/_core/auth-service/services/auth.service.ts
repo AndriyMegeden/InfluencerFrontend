@@ -1,173 +1,89 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable quote-props */
 /* eslint-disable @typescript-eslint/naming-convention */
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { LocalStorageService } from './localstorage.service';
-import { BehaviorSubject, fromEvent, Observable, throwError } from 'rxjs';
-import { Router } from '@angular/router';
-import { catchError, filter, finalize, map, switchMap, take } from 'rxjs/operators';
-import { Base64 } from 'js-base64';
-import { CheckRefreshPasswordCodeRequest, CreateUserRequest, GenerateRefreshPasswordCodeRequest, LoginSocialUserRequest, LoginUserRequest, RefreshPasswordRequest, VerificationAuthFieldsRequest } from '../dto/user.dto';
-import { AuthInfo, User } from 'src/app/interfaces/user.interface';
-import { RestApiService } from './rest-api.service';
+import { environment } from '@environments/environment';
+import { FbAuthResponse, User } from '@interfaces/user.interface';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthService extends RestApiService {
-
-  // Current User
-  public $isUser = new BehaviorSubject<User>(null);
-  // User Auth Status
-  public $isAuth = new BehaviorSubject<boolean>(false);
-  // Catch many http request
-  protected $refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  protected refreshTokenInProgress = false;
-
-  protected base64 = Base64;
-
-  constructor(
-    http: HttpClient,
-    localStorage: LocalStorageService,
-    protected router: Router,
-  )
-  {
-    super(http, localStorage);
-    localStorage.isTokenExist().subscribe((res) => {
-      if(res === false){
-        this.clearUser()
-      }
-    })
-  }
-  
-
-  protected loginRoute = '/auth/login';
-  protected loginSocialRoute = '/auth/loginSocial';
-  protected createUserRoute = '/auth/createUser';
-  protected updateUserRoute = '/auth/updateUser';
-  protected verificationEmailRoute = '/auth/verificationAuthFieldsRequest';
-  protected generateRefreshPasswordCodeRoute = '/auth/generateRefreshPasswordCode';
-  protected checkRefreshPasswordCodeRoute = '/auth/checkRefreshPasswordCode';
-  protected refreshPasswordRoute = '/auth/refreshPassword';
-  protected refreshTokenRoute = '/auth/refreshToken';
-  protected logoutRoute = '/auth/logout';
-
-  public init(){
-    this.$isAuth.next(this.checkToken());
-    if(this.localStorage.getToken() !== null && this.localStorage.getToken().token){
-      const decode = JSON.parse(this.base64.decode(this.localStorage.getToken().token.split('.')[1]));
-      this.$isUser.next({
-        userId: decode.userId,
-        email: decode.email,
-        avatar: decode.avatar,
-      });
-    }
-    
-    fromEvent(window, 'storage').subscribe((storageEvent: StorageEvent) => {
-      this.clearUser()
-    });
-  }
-
-  public setToken(data){
-    this.localStorage.setToken(data.authToken);
-    this.localStorage.setUser(data.authInfo);
-    this.$isAuth.next(this.checkToken());
-    const decode = JSON.parse(this.base64.decode(this.localStorage.getToken().token.split('.')[1]));
-    this.$isUser.next({
-      userId: decode.userId,
-      email: decode.email,
-      avatar: decode.avatar,
-    });
-  }
-
-  protected checkToken(){
-    if(this.localStorage.getToken() !== null && this.localStorage.getToken().token){
-      return true;
-    }
-    else{
-      return false;
+export class AuthService {
+  constructor(private http: HttpClient) {
+    const savedEmail = localStorage.getItem('email'); // Отримуємо email із localStorage
+    if (savedEmail) {
+      this.emailSource.next(savedEmail); // Встановлюємо email в BehaviorSubject
     }
   }
+  // BehaviorSubject Завжди зберігає останнє значення, яке в нього передали
+  private emailSource = new BehaviorSubject<string | null>(null);
+  // перетворює наш BehaviorSubject в Observable і на нього можна підписатись в heder
+  currentEmail = this.emailSource.asObservable(); // Спостерігач для email
 
-  public isUser(): Observable<AuthInfo> {
-    return this.$isUser.asObservable();
-  }
-
-  public isLoggedIn(): Observable<boolean> {
-    return this.$isAuth.asObservable();
-  }
-  
-  public clearUser() {
-    this.$isAuth.next(false);
-    this.$isUser.next(null);
-    this.router.navigateByUrl('');
+  // зберігаємо емейл у сервісі
+  setEmail(email: string) {
+    console.log('Email збережено у сервісі:', email);
+    this.emailSource.next(email); // Оновлюємо email
+    localStorage.setItem('email', email);
   }
 
-  public login(data: LoginUserRequest, resFn, errFn){
-    this.post<LoginUserRequest>(false,this.loginRoute, {}, data, (res) => {
-      this.setToken(res.data);
-      resFn(res)
-    }, errFn);
+  // отримуємо наш токен
+  get token(): string | null {
+    const expDateString = localStorage.getItem('fb-token-exp');
+    if (!expDateString) {
+      return null; // Если значение не найдено, вернуть null
+    }
+
+    const expDate = new Date(expDateString);
+
+    if (isNaN(expDate.getTime())) {
+      return null; // Если значение некорректно, вернуть null
+    }
+
+    if (new Date() > expDate) {
+      this.logOut();
+      null;
+    }
+    return localStorage.getItem('fb-token');
   }
 
-  public loginSocial(data: LoginSocialUserRequest, resFn, errFn){
-    this.post<LoginSocialUserRequest>(true,this.loginSocialRoute, {}, data, (res) => {
-      this.setToken(res.data);
-      resFn(res)
-    }, errFn);
-  }
-
-  async createUser(data: CreateUserRequest, resFn, errFn){
-    this.post<CreateUserRequest>(false,this.createUserRoute, {}, data, (res) => {
-      this.setToken(res.data);
-      resFn(res)
-    }, errFn);
-  }
-
-  async updateUser(id: string,data: CreateUserRequest, resFn, errFn){
-    this.put<CreateUserRequest>(true,this.updateUserRoute, id, {}, data, (res) => {
-      this.setToken(res.data);
-      resFn(res)
-    }, errFn);
-  }
-
- 
-  public verificationAuthFieldsRequest(data: VerificationAuthFieldsRequest, resFn, errFn){
-    this.post<VerificationAuthFieldsRequest>(false,this.verificationEmailRoute, {},data, resFn, errFn);
-  }
-
-  async generateRefreshPasswordCode(data: GenerateRefreshPasswordCodeRequest, resFn, errFn){
-    this.post<GenerateRefreshPasswordCodeRequest>(false,this.generateRefreshPasswordCodeRoute, {}, data, resFn, errFn);
-  }
-
-  async checkRefreshPasswordCode(data: CheckRefreshPasswordCodeRequest, resFn, errFn){
-    this.post<CheckRefreshPasswordCodeRequest>(false,this.checkRefreshPasswordCodeRoute, {}, data, resFn, errFn);
-  }
-
-  async refreshPassword(data: RefreshPasswordRequest, resFn, errFn){
-    this.post<RefreshPasswordRequest>(false,this.refreshPasswordRoute, {}, data, resFn, errFn);
-  }
-  
-  public refreshToken(request,next): Observable<HttpEvent<any>> {
-    return this.post<any>(true, this.refreshTokenRoute, {}, {}, null, null, true).pipe(
-      map((res: any) => {
-        this.setToken(res.data);
-        return next.handle(request);
-      }),
+  login(user: User): Observable<any> {
+    user.returnSecureToken = true;
+    return (
+      this.http
+        .post(
+          `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`,
+          user
+        )
+        // pipe используется для объединения нескольких операторов (функций) в цепочку обработки данных в потоке Observable.
+        // tap используется для выполнения побочного действия
+        .pipe(tap(this.setToken))
     );
   }
 
-  public logout(){
-    console.log(AuthService.name + ' - logout');
-    this.localStorage.removeToken()
-    this.localStorage.removeUser()
-    this.clearUser()
-    // this.post(true,this.logoutRoute,{},{},(res) => {
-    //   this.localStorage.removeToken();
-    // }, (err) => {
-    //   this.localStorage.removeToken();
-    // });
+  logOut() {
+    this.setToken(null);
+    this.emailSource.next(''); // Очищаємо BehaviorSubject
+    localStorage.removeItem('email'); // Видаляємо із localStorage
   }
 
+  isAuthenticated() {
+    return !!this.token;
+  }
+  // для зміни токена.Токен д одається до всіх запросів
+  private setToken(response: any | null) {
+    if (response) {
+      const fbAuthResponse: FbAuthResponse = response as FbAuthResponse;
+      const expData = new Date(
+        new Date().getTime() + +response.expiresIn * 1000
+      );
+      // для збереження токена в localStorage
+      localStorage.setItem('fb-token', response.idToken);
+      localStorage.setItem('fb-token-exp', expData.toString());
+    } else {
+      localStorage.clear();
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@core/auth-service/services/auth.service';
 import { ImmitationService } from '@core/auth-service/services/immitation.service';
 import { UserService } from '@core/auth-service/services/user.service';
 import { AuthComponent } from '@core/components/auth/auth.component';
@@ -17,8 +18,8 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
 export class RegisterComponent extends AuthComponent implements OnInit{
   
 
-  constructor(router: Router, userService: UserService, immitationService: ImmitationService){
-    super(router, userService, immitationService);
+  constructor(router: Router, userService: UserService, immitationService: ImmitationService, authService: AuthService){
+    super(router, userService, immitationService, authService);
   }
 
   ngOnInit(): void {

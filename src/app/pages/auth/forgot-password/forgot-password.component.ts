@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '@core/auth-service/services/auth.service';
 import { ImmitationService } from '@core/auth-service/services/immitation.service';
 import { UserService } from '@core/auth-service/services/user.service';
 import { AuthComponent } from '@core/components/auth/auth.component';
@@ -20,8 +21,8 @@ export class ForgotPasswordComponent  extends AuthComponent implements OnInit{
 
   public resetPasswordStep: resetPasswordStep = 'one';
 
-  constructor(router: Router, userService: UserService, immitationService: ImmitationService){
-    super(router, userService, immitationService);
+  constructor(router: Router, userService: UserService, immitationService: ImmitationService, authService: AuthService){
+    super(router, userService, immitationService, authService);
   }
   
   public override currentMode!: AuthSettings;

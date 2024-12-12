@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
@@ -20,6 +20,7 @@ import { DirectivesModule } from 'src/app/directives/directives.module';
 import { Location } from '@angular/common';
 import { UserService } from '@core/auth-service/services/user.service';
 import { ImmitationService } from '@core/auth-service/services/immitation.service';
+import { AuthService } from '@core/auth-service/services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -29,6 +30,7 @@ import { ImmitationService } from '@core/auth-service/services/immitation.servic
   imports: [SharedThemeModule, DirectivesModule],
 })
 export class AuthComponent {
+  @Output() emailChanged = new EventEmitter<string>();
   public submitted = false;
   // для створення користувача
   public page: PageType = 'login';
@@ -80,7 +82,8 @@ export class AuthComponent {
   constructor(
     protected router: Router,
     protected userService: UserService,
-    protected immitationService: ImmitationService
+    protected immitationService: ImmitationService,
+    protected auth: AuthService
   ) {}
 
   createForm() {
@@ -126,8 +129,6 @@ export class AuthComponent {
     }, 1000);
   }
 
-  
-
   checkSection(id: SectionType) {
     if (this.currentMode.sections.includes(id)) {
       return true;
@@ -157,19 +158,33 @@ export class AuthComponent {
     this.getForm();
     if (buttonId === 'signUp') {
       // Логіка реєстрації (можливо, виклик сервісу)
-      this.immitationService.login();
-      if (selectedRole === 'brand') {
-        this.router.navigate(['/auth-step/register-brand']); // Перехід на сторінку для бренду
-      } else if (selectedRole === 'influencer') {
-        this.router.navigate(['/auth-step/register-influencer']); // Перехід на сторінку для інфлюенсера
-      }
+      // this.immitationService.login();
+      // if (selectedRole === 'brand') {
+      //   this.router.navigate(['/auth-step/register-brand']); // Перехід на сторінку для бренду
+      // } else if (selectedRole === 'influencer') {
+      //   this.router.navigate(['/auth-step/register-influencer']); // Перехід на сторінку для інфлюенсера
+      // }
     }
     if (buttonId === 'signIn') {
-      this.immitationService.login();
-      console.log(this.immitationService.login);
-      this.router.navigate(['/main/listing']);
-      // this.userService.setSubmitted(true);
+      if (this.form.invalid) {
+        return;
+      }
+      const user: User = {
+        email: this.form.value.email,
+        password: this.form.value.password,
+      };
+      this.auth.login(user).subscribe(() => {
+        // this.form.reset();
+        this.router.navigate(['/main/listing']);
+      });
     }
+
+    // відправляємо наш емейл в сервіс
+    const userEmail = this.form.get('email')?.value;
+    if (userEmail) {
+      this.auth.setEmail(userEmail);
+    }
+
     this.startTimer();
   }
 

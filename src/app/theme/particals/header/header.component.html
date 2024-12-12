@@ -51,18 +51,18 @@
             class="general d-flex justify-center align-center"
             (click)="toggleFilter()"
           >
-            <img #iconButton src="/assets/svg/search.svg" alt="" />
+          <img #iconButton src="/assets/svg/search.svg" alt="" />
           </button>
         </div>
 
         <!-- частина коли авторизувався -->
         <div
-          *ngIf="immitationService.isAuth$ | async; else infoBlock"
+        *ngIf="auth.isAuthenticated(); else infoBlock"
           class="registered d-flex align-center"
         >
-        <div (click)="logoutMenu()" class="name-button">
-          <span class="name">Hello, </span>
-          <span class="surname">Sudarshan</span>
+        <div (click)="logoutMenuBurger()" class="name-button">
+          <span class="name">Hi, </span>
+          <span class="surname">{{ email }}</span>
           <img class="m-l-5" src="/assets/svg/arrow-logout-menu.svg" alt="" />
         </div>
           <div routerLink="/main/profile" class="profile-image m-l-16">

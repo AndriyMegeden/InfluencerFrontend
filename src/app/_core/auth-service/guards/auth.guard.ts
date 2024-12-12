@@ -1,47 +1,35 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { LocalStorageService } from '../services/localstorage.service';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  Router,
+} from '@angular/router';
 import { Observable } from 'rxjs';
-import { ImmitationService } from '../services/immitation.service';
+import { AuthService } from '../services/auth.service';
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthGuard implements CanActivate {
-  constructor(
-    private router: Router,
-    private localService: LocalStorageService,
-    private immitationService: ImmitationService
-  ) {}
-
-  // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-  //   if (this.checkUserAuth()) {
-  //     return true;
-  //   } else {
-  //     this.router.navigateByUrl('');
-  //     return false;
-  //   }
-  // }
-
-  // checkUserAuth() {
-  //   const user = this.localService.getToken();
-  //   return !!user && !!user.token;
-  // }
-
-
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.immitationService.isUserLogin().then((isAuth) => {
-      if (isAuth === true) {
-        return isAuth;
+    return new Promise((resolve) => {
+      if (this.authService.isAuthenticated() === true) {
+        resolve(true); // Дозволяємо доступ
       } else {
+        // Якщо користувач не авторизований, перенаправляємо його
         this.router.navigate(['/main/home'], {
           queryParams: {
             auth: false,
           },
         });
-        return false;
+        resolve(false); // Забороняємо доступ
       }
     });
   }
