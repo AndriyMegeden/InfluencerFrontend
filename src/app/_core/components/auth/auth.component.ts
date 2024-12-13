@@ -41,17 +41,6 @@ export class AuthComponent {
   public socials: Array<{ id: SocialType; text: string }> = socials;
   public resetKeys: Array<String> | any = resetKeys;
 
-  register() {
-    console.log('go');
-    this.userService.register(this.form.value).subscribe(
-      (result) => {
-        console.log('User create', result);
-      },
-      (error) => {
-        console.error('Error create user:', error);
-      }
-    );
-  }
 
   login() {
     if (this.form.invalid) {
@@ -152,27 +141,45 @@ export class AuthComponent {
 
   getForm() {}
 
+  // помилки під час реєстрації
+  handleError(error: any): string {
+    switch (error.error?.error?.message) {
+      case 'EMAIL_EXISTS':
+        return 'This email is already in use.';
+      case 'OPERATION_NOT_ALLOWED':
+        return 'Registration is disabled.';
+      case 'TOO_MANY_ATTEMPTS_TRY_LATER':
+        return 'Too many attempts. Please try again later.';
+      default:
+        return 'An unknown error occurred.';
+    }
+  }
+
   submitForm(buttonId: string) {
     const selectedRole = this.form.get('userRoles')?.value;
+    const user: User = {
+      email: this.form.value.email,
+      password: this.form.value.password,
+    };
 
     this.getForm();
     if (buttonId === 'signUp') {
       // Логіка реєстрації (можливо, виклик сервісу)
-      // this.immitationService.login();
-      // if (selectedRole === 'brand') {
-      //   this.router.navigate(['/auth-step/register-brand']); // Перехід на сторінку для бренду
-      // } else if (selectedRole === 'influencer') {
-      //   this.router.navigate(['/auth-step/register-influencer']); // Перехід на сторінку для інфлюенсера
-      // }
+      this.auth.register(user).subscribe(
+        () => {
+          console.log('User registered successfully');
+          this.router.navigate(['/main/home']); // Перенаправлення після успішної реєстрації
+        },
+        (error) => {
+          console.error(this.handleError(error));
+        }
+      );
     }
     if (buttonId === 'signIn') {
       if (this.form.invalid) {
         return;
       }
-      const user: User = {
-        email: this.form.value.email,
-        password: this.form.value.password,
-      };
+
       this.auth.login(user).subscribe(() => {
         // this.form.reset();
         this.router.navigate(['/main/listing']);

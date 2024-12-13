@@ -24,6 +24,7 @@ export class AuthGuard implements CanActivate {
         resolve(true); // Дозволяємо доступ
       } else {
         // Якщо користувач не авторизований, перенаправляємо його
+        this.authService.logOut()
         this.router.navigate(['/main/home'], {
           queryParams: {
             auth: false,

@@ -49,6 +49,17 @@ export class AuthService {
     return localStorage.getItem('fb-token');
   }
 
+  register(user: User): Observable<any> {
+    user.returnSecureToken = true;
+    return this.http
+      .post(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`,
+        user
+      )
+      .pipe(tap(this.setToken)); // Збереження токена після реєстрації
+  }
+  
+
   login(user: User): Observable<any> {
     user.returnSecureToken = true;
     return (
