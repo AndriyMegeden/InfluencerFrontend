@@ -14,19 +14,19 @@ export class AuthService {
   constructor(private http: HttpClient) {
     const savedEmail = localStorage.getItem('email'); // Отримуємо email із localStorage
     if (savedEmail) {
-      this.emailSource.next(savedEmail); // Встановлюємо email в BehaviorSubject
+      this.usernameSource.next(savedEmail); // Встановлюємо email в BehaviorSubject
     }
   }
   // BehaviorSubject Завжди зберігає останнє значення, яке в нього передали
-  private emailSource = new BehaviorSubject<string | null>(null);
+  private usernameSource = new BehaviorSubject<string | null>(null);
   // перетворює наш BehaviorSubject в Observable і на нього можна підписатись в heder
-  currentEmail = this.emailSource.asObservable(); // Спостерігач для email
+  currentEmail = this.usernameSource.asObservable(); // Спостерігач для email
 
   // зберігаємо емейл у сервісі
-  setEmail(email: string) {
-    console.log('Email збережено у сервісі:', email);
-    this.emailSource.next(email); // Оновлюємо email
-    localStorage.setItem('email', email);
+  setEmail(username: string) {
+    console.log('username збережено у сервісі:', username);
+    this.usernameSource.next(username); // Оновлюємо email
+    localStorage.setItem('username', username);
   }
 
   // отримуємо наш токен
@@ -76,8 +76,8 @@ export class AuthService {
 
   logOut() {
     this.setToken(null);
-    this.emailSource.next(''); // Очищаємо BehaviorSubject
-    localStorage.removeItem('email'); // Видаляємо із localStorage
+    this.usernameSource.next(''); // Очищаємо BehaviorSubject
+    localStorage.removeItem('username'); // Видаляємо із localStorage
   }
 
   isAuthenticated() {

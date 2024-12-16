@@ -41,7 +41,6 @@ export class AuthComponent {
   public socials: Array<{ id: SocialType; text: string }> = socials;
   public resetKeys: Array<String> | any = resetKeys;
 
-
   login() {
     if (this.form.invalid) {
       return;
@@ -97,6 +96,10 @@ export class AuthComponent {
         formControlsConfig[key] = new FormControl('', [Validators.required]);
       });
     }
+
+    // Нові поля для телефону і username
+    formControlsConfig['phone'] = new FormControl(''); // Додаємо номер телефону
+    formControlsConfig['username'] = new FormControl(''); // Додаємо username
 
     this.form = new FormGroup(formControlsConfig);
   }
@@ -187,7 +190,7 @@ export class AuthComponent {
     }
 
     // відправляємо наш емейл в сервіс
-    const userEmail = this.form.get('email')?.value;
+    const userEmail = this.form.get('username')?.value;
     if (userEmail) {
       this.auth.setEmail(userEmail);
     }

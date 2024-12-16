@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '@core/auth-service/services/auth.service';
 import { ImmitationService } from '@core/auth-service/services/immitation.service';
 import { UserService } from '@core/auth-service/services/user.service';
@@ -22,6 +23,7 @@ export class HeaderComponent {
   
 
   constructor(
+    protected router: Router,
     protected immitationService: ImmitationService,
     protected auth: AuthService
   ) {}
@@ -62,6 +64,7 @@ export class HeaderComponent {
     console.log(this.auth.token);
     this.isActiveMenu = !this.isActiveMenu;
     this.auth.logOut();
+    this.router.navigate(['/main/home']);
   }
 
   logoutMenuBurger() {
