@@ -146,6 +146,17 @@ export class AuthService {
     this.usernameSubject.next(''); // Очищаємо BehaviorSubject
     localStorage.removeItem('username'); // Видаляємо із localStorage
   }
+// потрібно саме так того шо з сервера вертається список обєктів і нам по ключу треба отримати id
+  getUserId(): Observable<{ [key: string]: any }> {
+    return this.http.get<{ [key: string]: any }>(`${environment.fireBaseDBurl}/users.json`);
+  }
+  
+
+  deleteAccount(id: string): Observable<void> {
+    // Метод для видалення користувача за ID
+    return this.http.delete<void>(`${environment.fireBaseDBurl}/users/${id}.json`);
+  }
+  
 
   isAuthenticated() {
     return !!this.token;

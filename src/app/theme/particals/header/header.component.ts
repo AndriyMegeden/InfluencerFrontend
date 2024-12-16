@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/auth-service/services/auth.service';
 import { ImmitationService } from '@core/auth-service/services/immitation.service';
 import { UserService } from '@core/auth-service/services/user.service';
+import { FbCreateResponse } from '@interfaces/user.interface';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -20,13 +21,14 @@ export class HeaderComponent {
   cetegory = ['Sport', 'clothes', 'vieoblog'];
 
   @ViewChild('iconButton') iconButton!: ElementRef;
-  
 
   constructor(
     protected router: Router,
     protected immitationService: ImmitationService,
     protected auth: AuthService
   ) {}
+
+  id: string | undefined; // зберігаємо id
 
   toggleFilter() {
     this.isActive = !this.isActive;
@@ -50,7 +52,6 @@ export class HeaderComponent {
     console.log(this.reactiveForm);
   }
 
-
   username: string | null = null;
 
   ngOnInit() {
@@ -67,6 +68,49 @@ export class HeaderComponent {
     this.router.navigate(['/main/home']);
   }
 
+  fetchIdFromDatabase() {
+    this.auth.getUserId().subscribe(
+      (response) => {
+        // Перевіряємо, чи є дані
+        if (response) {
+          // Отримуємо перший ключ як ID
+          const keys = Object.keys(response);
+          if (keys.length > 0) {
+            this.id = keys[0]; // Перший ключ - це ваш ID
+            console.log('Отримано ID:', this.id);
+          } else {
+            console.error('Дані не знайдені в базі!');
+          }
+        } else {
+          console.error('Відповідь порожня!');
+        }
+      },
+      (error) => {
+        console.error('Помилка отримання ID:', error);
+      }
+    );
+  }
+  
+
+  remove() {
+    // Перевіряємо, чи є ID перед видаленням
+    if (this.id) {
+      this.auth.deleteAccount(this.id).subscribe(
+        () => {
+          console.log('Користувач успішно видалений');
+        },
+        (error) => {
+          console.error('Помилка видалення:', error);
+        }
+      );
+    } else {
+      console.error('ID не визначено!');
+    }
+  }
+
+
+
+ 
   logoutMenuBurger() {
     if (this.isActive === true || this.Burger === true) {
       this.isActive = false;
