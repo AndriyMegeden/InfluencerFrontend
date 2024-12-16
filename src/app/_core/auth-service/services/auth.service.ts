@@ -4,29 +4,74 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
-import { FbAuthResponse, User } from '@interfaces/user.interface';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import {
+  FbAuthResponse,
+  FbCreateResponse,
+  User,
+} from '@interfaces/user.interface';
+import {
+  BehaviorSubject,
+  catchError,
+  map,
+  Observable,
+  of,
+  switchMap,
+  tap,
+} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {
-    const savedEmail = localStorage.getItem('email'); // Отримуємо email із localStorage
-    if (savedEmail) {
-      this.usernameSource.next(savedEmail); // Встановлюємо email в BehaviorSubject
+    // Зчитуємо username з localStorage, якщо він є. Потрібно шоб виводилось в шаблон і не зникало
+    const savedUsername = localStorage.getItem('username');
+    if (savedUsername) {
+      this.usernameSubject.next(savedUsername); // Оновлюємо BehaviorSubject
     }
   }
   // BehaviorSubject Завжди зберігає останнє значення, яке в нього передали
-  private usernameSource = new BehaviorSubject<string | null>(null);
+  private usernameSubject = new BehaviorSubject<string>('');
   // перетворює наш BehaviorSubject в Observable і на нього можна підписатись в heder
-  currentEmail = this.usernameSource.asObservable(); // Спостерігач для email
+  username$ = this.usernameSubject.asObservable();
 
-  // зберігаємо емейл у сервісі
-  setEmail(username: string) {
+  // зберігаємо Username у сервісі
+  setUsername(username: string) {
     console.log('username збережено у сервісі:', username);
-    this.usernameSource.next(username); // Оновлюємо email
-    localStorage.setItem('username', username);
+    this.usernameSubject.next(username); // Оновлюємо username
+    localStorage.setItem('username', username); // додаєм в localstorage
+  }
+
+  username: string = '';
+
+  fetchUsername(email: string) {
+    // 3. Завантажуємо дані з Firebase
+    this.http
+      .get<{ [key: string]: any }>(`${environment.fireBaseDBurl}/users.json`)
+      .subscribe(
+        (response) => {
+          // Перетворюємо об'єкт на масив користувачів
+          const users = Object.keys(response).map((key) => ({
+            ...response[key],
+            id: key,
+          }));
+
+          // 4. Знаходимо користувача за email
+          const matchedUser = users.find((user) => user.email === email);
+          // якшо email збігається з переданим параметром email то виводим наш емейл
+          if (matchedUser) {
+            this.setUsername(matchedUser.username);
+            this.usernameSubject.next(matchedUser.username);
+            this.username = matchedUser.username; // Оновлюємо змінну для шаблону
+            console.log('Fetched username:', this.username);
+          } else {
+            console.warn('No user found with the given email.');
+          }
+        },
+        (error) => {
+          console.error('Error fetching username:', error);
+        }
+      );
   }
 
   // отримуємо наш токен
@@ -58,7 +103,29 @@ export class AuthService {
       )
       .pipe(tap(this.setToken)); // Збереження токена після реєстрації
   }
-  
+
+  // Ця функція create відправляє HTTP POST-запит для створення нового юзера на сервері.
+  create(user: User): Observable<Partial<User>> {
+    const userData = {
+      username: user.username,
+      mobileNumber: user.phoneNumber,
+      email: user.email,
+    };
+
+    return this.http
+      .post<FbCreateResponse>(
+        `${environment.fireBaseDBurl}/users.json`,
+        userData
+      )
+      .pipe(
+        map((response: FbCreateResponse) => {
+          return {
+            ...userData,
+            id: response.name, // Додаємо ідентифікатор, отриманий із сервера
+          };
+        })
+      );
+  }
 
   login(user: User): Observable<any> {
     user.returnSecureToken = true;
@@ -76,13 +143,14 @@ export class AuthService {
 
   logOut() {
     this.setToken(null);
-    this.usernameSource.next(''); // Очищаємо BehaviorSubject
+    this.usernameSubject.next(''); // Очищаємо BehaviorSubject
     localStorage.removeItem('username'); // Видаляємо із localStorage
   }
 
   isAuthenticated() {
     return !!this.token;
   }
+
   // для зміни токена.Токен д одається до всіх запросів
   private setToken(response: any | null) {
     if (response) {

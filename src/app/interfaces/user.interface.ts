@@ -3,7 +3,7 @@ export type SocialType = 'google' | 'facebook';
 
 export interface User {
   username?: string;
-  mobileNumber?: number;
+  phoneNumber?: number;
   email: string;
   password: string;
   returnSecureToken?: boolean;
@@ -12,4 +12,7 @@ export interface User {
 export interface FbAuthResponse {
   idToken: string;
   expiresIn: string;
+}
+export interface FbCreateResponse {
+  name: string;
 }

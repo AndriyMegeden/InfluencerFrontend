@@ -51,12 +51,12 @@ export class HeaderComponent {
   }
 
 
-  email: string | null = null;
+  username: string | null = null;
 
   ngOnInit() {
-    // Підпишіться на зміни значень email і лишається тільки вивести в шаблон
-    this.auth.currentEmail.subscribe((email) => {
-      this.email = email;
+    // Підпишіться на зміни значень Username і лишається тільки вивести в шаблон
+    this.auth.username$.subscribe((username) => {
+      this.username = username; // Оновлюємо змінну username
     });
   }
 

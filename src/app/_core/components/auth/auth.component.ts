@@ -83,6 +83,10 @@ export class AuthComponent {
       );
     });
 
+    // Нові поля для телефону і username
+    formControlsConfig['phoneNumber'] = new FormControl(''); // Додаємо номер телефону
+    formControlsConfig['username'] = new FormControl(''); // Додаємо username
+
     if (this.currentMode.sections.includes('remember')) {
       formControlsConfig['remember'] = new FormControl(false);
     }
@@ -96,10 +100,6 @@ export class AuthComponent {
         formControlsConfig[key] = new FormControl('', [Validators.required]);
       });
     }
-
-    // Нові поля для телефону і username
-    formControlsConfig['phone'] = new FormControl(''); // Додаємо номер телефону
-    formControlsConfig['username'] = new FormControl(''); // Додаємо username
 
     this.form = new FormGroup(formControlsConfig);
   }
@@ -163,18 +163,37 @@ export class AuthComponent {
     const user: User = {
       email: this.form.value.email,
       password: this.form.value.password,
+      username: this.form.value.username,
+      phoneNumber: this.form.value.phoneNumber,
     };
 
     this.getForm();
     if (buttonId === 'signUp') {
-      // Логіка реєстрації (можливо, виклик сервісу)
+      // Реєстрація користувача через Firebase Authentication
+      // // відправляємо наш username в сервіс
+      const userUsername = this.form.get('username')?.value;
+      if (userUsername) {
+        this.auth.setUsername(userUsername);
+      }
       this.auth.register(user).subscribe(
-        () => {
-          console.log('User registered successfully');
-          this.router.navigate(['/main/home']); // Перенаправлення після успішної реєстрації
+        (authResponse) => {
+          console.log(
+            'User registered successfully in Firebase Auth:',
+            authResponse
+          );
+
+          // Додаємо користувача в базу даних Firebase (Realtime Database)
+          this.auth.create(user).subscribe(
+            (dbResponse) => {
+              console.log('User added to Firebase DB:', dbResponse);
+            },
+            (dbError) => {
+              console.error('Error adding user to Firebase DB:', dbError);
+            }
+          );
         },
         (error) => {
-          console.error(this.handleError(error));
+          console.error('Error during registration:', this.handleError(error));
         }
       );
     }
@@ -183,16 +202,11 @@ export class AuthComponent {
         return;
       }
 
-      this.auth.login(user).subscribe(() => {
-        // this.form.reset();
+      this.auth.login(user).subscribe((response: any) => {
+        const userEmail = response.email;
+        this.auth.fetchUsername(userEmail);
         this.router.navigate(['/main/listing']);
       });
-    }
-
-    // відправляємо наш емейл в сервіс
-    const userEmail = this.form.get('username')?.value;
-    if (userEmail) {
-      this.auth.setEmail(userEmail);
     }
 
     this.startTimer();

@@ -7,6 +7,7 @@ import { Environment } from "./interface";
 export const environment: Environment = {
   production: false,
   apiKey: "AIzaSyBDXaHmzoDr_1WJFM61M3Zt_K3b8GFvxc0",
+  fireBaseDBurl: "https://influencer-a44e4-default-rtdb.firebaseio.com",
   languages: {
     available: ['en'],
     default: 'en'
