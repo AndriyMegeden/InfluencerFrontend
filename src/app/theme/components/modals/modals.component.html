@@ -151,4 +151,21 @@
       </div>
     </div>
   </ng-container>
+  <ng-container *ngSwitchCase="isOpen && 'deleteAccount'">
+    <div class="modal-content small-content successfull-modal">
+      <div
+        class="title d-flex justify-end p-lr-15 d-flex justify-space-between align-center"
+      >
+        <img (click)="closeModal()" src="/assets/svg/close-modal.svg" alt="" />
+      </div>
+
+      <div class="form p-50 sm-p-20">
+        <div class="successfull d-flex justify-center align-center flex-d-col m-b-30">
+          <span class="notification">Do you really want to delete your account?</span>
+          <span class="notification m-b-30">All data will be lost</span>
+          <button (click)="deleteAccount()" class="general">YES</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
 </div>

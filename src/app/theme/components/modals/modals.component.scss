@@ -1,3 +1,7 @@
+.no-scroll {
+  overflow: hidden;
+}
+
 .modal-background {
   position: fixed;
   top: 0;
@@ -97,6 +101,9 @@
 
   .form {
     .successfull {
+      button{
+        width: 80% !important;
+      }
       span {
         font-family: "Manrope", sans-serif;
         font-weight: 600;
@@ -105,7 +112,8 @@
         color: var(--dark-background);
       }
       .notification {
-        font-size: 26px;
+        text-align: center;
+        font-size: 20px;
       }
     }
     .input {
@@ -128,6 +136,14 @@
     border-radius: 0;
     .title {
       border-radius: 0;
+    }
+    .form {
+      .successfull {
+        .notification {
+          text-align: center;
+          font-size: 17px;
+        }
+      }
     }
   }
 }

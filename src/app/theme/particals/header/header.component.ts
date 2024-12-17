@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/auth-service/services/auth.service';
@@ -21,10 +21,11 @@ export class HeaderComponent {
   isAuthenticated = false;
   citys = ['Paris', 'Milano', 'Krakow'];
   cetegory = ['Sport', 'clothes', 'vieoblog'];
-
+  @Output() openModalEvent = new EventEmitter<string>();
   @ViewChild('iconButton') iconButton!: ElementRef;
 
   constructor(
+    protected renderer: Renderer2,
     protected router: Router,
     protected immitationService: ImmitationService,
     protected auth: AuthService
@@ -70,19 +71,13 @@ export class HeaderComponent {
     this.router.navigate(['/main/home']);
   }
 
-  // видалити акаунт
-  deleteAccount() {
-    const currentEmail = localStorage.getItem('email');
-    if (currentEmail) {
-      this.auth.deleteUser();
-      this.auth.getUserId(currentEmail);
-      this.isActiveMenu = !this.isActiveMenu;
-      this.router.navigate(['/main/home']);
-      this.auth.logOut();
-    } else {
-      console.error('Email не знайдено в localStorage');
-    }
+  // відкрити модалку попередження для видалення акаунту
+  openModal(type: string) {
+    this.openModalEvent.emit(type);
+    this.isActiveMenu = !this.isActiveMenu;
+    this.renderer.setStyle(document.body, 'overflow', 'hidden');
   }
+
 
   logoutMenuBurger() {
     if (this.isActive === true || this.Burger === true) {

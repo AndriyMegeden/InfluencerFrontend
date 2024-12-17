@@ -4,8 +4,11 @@ import {
   EventEmitter,
   Input,
   Output,
+  Renderer2,
   ViewChild,
 } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '@core/auth-service/services/auth.service';
 
 @Component({
   selector: 'app-modals',
@@ -18,6 +21,9 @@ export class ModalsComponent {
   @Input() modalType: string = '';
   @Output() closeModalEvent = new EventEmitter<void>();
   @ViewChild('inputElement') inputElement!: ElementRef;
+  public isActiveMenu: boolean = false;
+  constructor(protected router: Router, protected auth: AuthService,     protected renderer: Renderer2,) {}
+
   activeButton:
     | 'instagram'
     | 'tiktok'
@@ -44,5 +50,21 @@ export class ModalsComponent {
 
   closeModal() {
     this.closeModalEvent.emit();
+    this.renderer.removeStyle(document.body, 'overflow');
+  }
+
+  // кнопка яка видаляє наш акаунт 
+  deleteAccount() {
+    const currentEmail = localStorage.getItem('email');
+    if (currentEmail) {
+      this.auth.deleteUser();
+      this.auth.getUserId(currentEmail);
+      this.isActiveMenu = !this.isActiveMenu;
+      this.closeModal()
+      this.router.navigate(['/main/home']);
+      this.auth.logOut();
+    } else {
+      console.error('Email не знайдено в localStorage');
+    }
   }
 }
