@@ -9,6 +9,7 @@ import {
   FbCreateResponse,
   User,
 } from '@interfaces/user.interface';
+import { response } from 'express';
 import {
   BehaviorSubject,
   catchError,
@@ -43,6 +44,7 @@ export class AuthService {
   }
 
   username: string = '';
+  id: string = '';
 
   fetchUsername(email: string) {
     // 3. Завантажуємо дані з Firebase
@@ -64,6 +66,28 @@ export class AuthService {
             this.usernameSubject.next(matchedUser.username);
             this.username = matchedUser.username; // Оновлюємо змінну для шаблону
             console.log('Fetched username:', this.username);
+          } else {
+            console.warn('No user found with the given email.');
+          }
+        },
+        (error) => {
+          console.error('Error fetching username:', error);
+        }
+      );
+  }
+// отримуємо айді по емейлу який беремо з localstorage
+  fetchId(email: string) {
+    this.http
+      .get<{ [key: string]: any }>(`${environment.fireBaseDBurl}/users.json`)
+      .subscribe(
+        (response) => {
+          const users = Object.keys(response).map((key) => ({
+            ...response[key],
+            id: key,
+          }));
+          const matchedUser = users.find((user) => user.email === email);
+          if (matchedUser) {
+            console.log('Fetched username:', this.id);
           } else {
             console.warn('No user found with the given email.');
           }
@@ -101,7 +125,12 @@ export class AuthService {
         `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`,
         user
       )
-      .pipe(tap(this.setToken)); // Збереження токена після реєстрації
+      .pipe(
+        tap((response) => {
+          this.setToken(response); // Зберігаємо токен
+          localStorage.setItem('email', user.email); // Зберігаємо email в localStorage
+        })
+      )
   }
 
   // Ця функція create відправляє HTTP POST-запит для створення нового юзера на сервері.
@@ -137,27 +166,81 @@ export class AuthService {
         )
         // pipe используется для объединения нескольких операторов (функций) в цепочку обработки данных в потоке Observable.
         // tap используется для выполнения побочного действия
-        .pipe(tap(this.setToken))
+        .pipe(
+          tap((response) => {
+            this.setToken(response); // Зберігаємо токен
+            localStorage.setItem('email', user.email); // Зберігаємо email в localStorage
+          })
+        )
     );
   }
 
-  logOut() {
-    this.setToken(null);
-    this.usernameSubject.next(''); // Очищаємо BehaviorSubject
-    localStorage.removeItem('username'); // Видаляємо із localStorage
-  }
-// потрібно саме так того шо з сервера вертається список обєктів і нам по ключу треба отримати id
-  getUserId(): Observable<{ [key: string]: any }> {
-    return this.http.get<{ [key: string]: any }>(`${environment.fireBaseDBurl}/users.json`);
-  }
-  
 
-  deleteAccount(id: string): Observable<void> {
-    // Метод для видалення користувача за ID
+// отримуєм айді по емейлу і методом remove видаляємо дані користувача з бази даних
+  getUserId(email: string): void {
+    this.http
+      .get<{ [key: string]: any }>(`${environment.fireBaseDBurl}/users.json`)
+      .subscribe((response) => {
+        if (response) {
+          // Перетворюємо базу у масив користувачів
+          const users = Object.keys(response).map((key) => ({
+            ...response[key],
+            id: key, // Додаємо ключ як id
+          }));
+  
+          // Знаходимо користувача за email
+          const currentUser = users.find((user) => user.email === email);
+  
+          if (currentUser) {
+            console.log(`Знайдено користувача:`, currentUser);
+  
+            // Викликаємо метод видалення з отриманим id
+            this.remove(currentUser.id).subscribe(() => {
+              console.log(`Користувача з id ${currentUser.id} успішно видалено.`);
+            });
+          } else {
+            console.error('Користувач із таким email не знайдений.');
+          }
+        } else {
+          console.error('База даних порожня.');
+        }
+      });
+  }
+
+  remove(id: string): Observable<void> {
     return this.http.delete<void>(`${environment.fireBaseDBurl}/users/${id}.json`);
   }
   
-
+// цим методом ми вже видаляємо користувача з authentication по його idToken який берем з localstorage
+  deleteUser(): void {
+    const idToken = localStorage.getItem('fb-token'); // Отримуємо idToken з localStorage
+    if (!idToken) {
+      console.error('idToken не знайдено в localStorage.');
+      return;
+    }
+  
+    const url = `https://identitytoolkit.googleapis.com/v1/accounts:delete?key=${environment.apiKey}`;
+    const body = {
+      idToken: idToken, // Передаємо idToken
+    };
+  
+    this.http.post(url, body).subscribe(
+      (response) => {
+        console.log('Користувача успішно видалено:', response);
+        localStorage.removeItem('idToken'); // Видаляємо idToken з localStorage
+      },
+      (error) => {
+        console.error('Помилка при видаленні користувача:', error);
+      }
+    );
+  }
+  
+  logOut() {
+    this.setToken(null);
+    this.usernameSubject.next(''); // Очищаємо BehaviorSubject
+    localStorage.clear();// Видаляємо із localStorage
+  }
+  
   isAuthenticated() {
     return !!this.token;
   }

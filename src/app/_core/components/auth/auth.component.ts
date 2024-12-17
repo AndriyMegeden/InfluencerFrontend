@@ -181,8 +181,6 @@ export class AuthComponent {
             'User registered successfully in Firebase Auth:',
             authResponse
           );
-
-          // Додаємо користувача в базу даних Firebase (Realtime Database)
           this.auth.create(user).subscribe(
             (dbResponse) => {
               console.log('User added to Firebase DB:', dbResponse);
@@ -203,8 +201,10 @@ export class AuthComponent {
       }
 
       this.auth.login(user).subscribe((response: any) => {
+        console.log(response)
         const userEmail = response.email;
         this.auth.fetchUsername(userEmail);
+        // this.auth.fetchId(userId)
         this.router.navigate(['/main/listing']);
       });
     }

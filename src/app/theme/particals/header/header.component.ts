@@ -68,49 +68,18 @@ export class HeaderComponent {
     this.router.navigate(['/main/home']);
   }
 
-  fetchIdFromDatabase() {
-    this.auth.getUserId().subscribe(
-      (response) => {
-        // Перевіряємо, чи є дані
-        if (response) {
-          // Отримуємо перший ключ як ID
-          const keys = Object.keys(response);
-          if (keys.length > 0) {
-            this.id = keys[0]; // Перший ключ - це ваш ID
-            console.log('Отримано ID:', this.id);
-          } else {
-            console.error('Дані не знайдені в базі!');
-          }
-        } else {
-          console.error('Відповідь порожня!');
-        }
-      },
-      (error) => {
-        console.error('Помилка отримання ID:', error);
-      }
-    );
-  }
-  
-
-  remove() {
-    // Перевіряємо, чи є ID перед видаленням
-    if (this.id) {
-      this.auth.deleteAccount(this.id).subscribe(
-        () => {
-          console.log('Користувач успішно видалений');
-        },
-        (error) => {
-          console.error('Помилка видалення:', error);
-        }
-      );
+  // видалити акаунт
+  deleteAccount() {
+    const currentEmail = localStorage.getItem('email');
+    if (currentEmail) {
+      this.auth.deleteUser();
+      this.auth.getUserId(currentEmail);
+      this.auth.logOut()
     } else {
-      console.error('ID не визначено!');
+      console.error('Email не знайдено в localStorage');
     }
   }
 
-
-
- 
   logoutMenuBurger() {
     if (this.isActive === true || this.Burger === true) {
       this.isActive = false;
