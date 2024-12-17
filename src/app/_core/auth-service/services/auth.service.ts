@@ -221,7 +221,7 @@ export class AuthService {
   
     const url = `https://identitytoolkit.googleapis.com/v1/accounts:delete?key=${environment.apiKey}`;
     const body = {
-      idToken: idToken, // Передаємо idToken
+      idToken: idToken,
     };
   
     this.http.post(url, body).subscribe(

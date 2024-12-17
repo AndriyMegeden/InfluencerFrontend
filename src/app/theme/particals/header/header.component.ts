@@ -5,6 +5,7 @@ import { AuthService } from '@core/auth-service/services/auth.service';
 import { ImmitationService } from '@core/auth-service/services/immitation.service';
 import { UserService } from '@core/auth-service/services/user.service';
 import { FbCreateResponse } from '@interfaces/user.interface';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,6 +14,7 @@ import { FbCreateResponse } from '@interfaces/user.interface';
 export class HeaderComponent {
   public isActive: boolean = false;
   public isActiveMenu: boolean = false;
+  public stream!: Subscription;
   public Burger: boolean = false;
   public submitted: boolean = false;
   public num: number = 50;
@@ -56,7 +58,7 @@ export class HeaderComponent {
 
   ngOnInit() {
     // Підпишіться на зміни значень Username і лишається тільки вивести в шаблон
-    this.auth.username$.subscribe((username) => {
+   this.stream = this.auth.username$.subscribe((username) => {
       this.username = username; // Оновлюємо змінну username
     });
   }
@@ -74,7 +76,9 @@ export class HeaderComponent {
     if (currentEmail) {
       this.auth.deleteUser();
       this.auth.getUserId(currentEmail);
-      this.auth.logOut()
+      this.isActiveMenu = !this.isActiveMenu;
+      this.router.navigate(['/main/home']);
+      this.auth.logOut();
     } else {
       console.error('Email не знайдено в localStorage');
     }
@@ -98,5 +102,9 @@ export class HeaderComponent {
       this.isActiveMenu === false;
     }
     this.Burger = !this.Burger;
+  }
+
+  ngOnDestroy() {
+    this.stream.unsubscribe();
   }
 }
