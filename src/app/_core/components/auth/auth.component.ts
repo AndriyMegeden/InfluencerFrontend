@@ -33,6 +33,7 @@ export class AuthComponent {
   @Output() emailChanged = new EventEmitter<string>();
   public submitted = false;
   // для створення користувача
+  public remember: boolean = false;
   public page: PageType = 'login';
   public currentMode!: AuthSettings;
   public form!: FormGroup;
@@ -201,7 +202,16 @@ export class AuthComponent {
       }
 
       this.auth.login(user).subscribe((response: any) => {
-        console.log(response)
+        const token = localStorage.getItem('fb-token-exp');
+        // потрібно шоб продовжити токен на 30 днів 
+        if ((this.remember && token)) {
+          const tokenExpiryDate = new Date(token);
+          tokenExpiryDate.setDate(tokenExpiryDate.getDate() + 30);
+          const newFormattedDate = tokenExpiryDate.toString();
+          localStorage.setItem('fb-token-exp', newFormattedDate);
+          console.log(newFormattedDate);
+        }
+        console.log(response);
         const userEmail = response.email;
         this.auth.fetchUsername(userEmail);
         // this.auth.fetchId(userId)
@@ -210,6 +220,11 @@ export class AuthComponent {
     }
 
     this.startTimer();
+  }
+// тут функція яка по кліку міняє remember на true або false 
+  rememberMe() {
+    this.remember = !this.remember;
+    console.log(this.remember);
   }
 
   socialLogin(id: string) {}
