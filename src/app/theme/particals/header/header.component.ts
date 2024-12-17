@@ -106,5 +106,6 @@ export class HeaderComponent {
 
   ngOnDestroy() {
     this.stream.unsubscribe();
+    console.log('unsubscribe in HEADER')
   }
 }

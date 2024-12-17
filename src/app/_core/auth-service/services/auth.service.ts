@@ -16,7 +16,9 @@ import {
   map,
   Observable,
   of,
+  Subject,
   switchMap,
+  takeUntil,
   tap,
 } from 'rxjs';
 
@@ -24,6 +26,8 @@ import {
   providedIn: 'root',
 })
 export class AuthService {
+  private destroy$ = new Subject<void>(); // Використовуємо Subject для відписки
+  
   constructor(private http: HttpClient) {
     // Зчитуємо username з localStorage, якщо він є. Потрібно шоб виводилось в шаблон і не зникало
     const savedUsername = localStorage.getItem('username');
@@ -129,7 +133,8 @@ export class AuthService {
         tap((response) => {
           this.setToken(response); // Зберігаємо токен
           localStorage.setItem('email', user.email); // Зберігаємо email в localStorage
-        })
+        }),
+        takeUntil(this.destroy$)
       )
   }
 
@@ -152,7 +157,8 @@ export class AuthService {
             ...userData,
             id: response.name, // Додаємо ідентифікатор, отриманий із сервера
           };
-        })
+        }),
+        takeUntil(this.destroy$)
       );
   }
 
@@ -170,7 +176,8 @@ export class AuthService {
           tap((response) => {
             this.setToken(response); // Зберігаємо токен
             localStorage.setItem('email', user.email); // Зберігаємо email в localStorage
-          })
+          }),
+          takeUntil(this.destroy$)
         )
     );
   }
@@ -180,6 +187,7 @@ export class AuthService {
   getUserId(email: string): void {
     this.http
       .get<{ [key: string]: any }>(`${environment.fireBaseDBurl}/users.json`)
+     
       .subscribe((response) => {
         if (response) {
           // Перетворюємо базу у масив користувачів
@@ -235,6 +243,7 @@ export class AuthService {
     );
   }
   
+
   logOut() {
     this.setToken(null);
     this.usernameSubject.next(''); // Очищаємо BehaviorSubject
@@ -259,4 +268,12 @@ export class AuthService {
       localStorage.clear();
     }
   }
+
+
+
+  ngOnDestroy() {
+    this.destroy$.next(); // Відправляємо сигнал для відписки
+    this.destroy$.complete(); // Завершуємо Subject
+  }
 }
+
